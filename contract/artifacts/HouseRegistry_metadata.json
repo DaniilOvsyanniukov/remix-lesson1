@@ -16,9 +16,9 @@
 					},
 					{
 						"indexed": false,
-						"internalType": "string",
+						"internalType": "address",
 						"name": "sellerAddress",
-						"type": "string"
+						"type": "address"
 					},
 					{
 						"indexed": false,
@@ -62,9 +62,9 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
+						"internalType": "address",
 						"name": "sellerAddress",
-						"type": "string"
+						"type": "address"
 					},
 					{
 						"internalType": "string",
@@ -88,9 +88,9 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
+						"internalType": "address",
 						"name": "_sellerAddress",
-						"type": "string"
+						"type": "address"
 					},
 					{
 						"internalType": "string",
@@ -111,11 +111,8 @@
 			}
 		],
 		"devdoc": {
-			"custom:dev-run-script": "./scripts/deploy_with_ethers.ts",
-			"details": "Store & retrieve value in a variable",
 			"kind": "dev",
 			"methods": {},
-			"title": "Storage",
 			"version": 1
 		},
 		"userdoc": {
@@ -126,7 +123,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contract/1_Storage.sol": "HouseRegistry"
+			"contract/HouseRegistry.sol": "HouseRegistry"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -140,12 +137,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contract/1_Storage.sol": {
-			"keccak256": "0x5164b54c294ece23660ed8a4e4d49afe519c324389d70bf7ed49d4b5c5557af3",
+		"contract/HouseRegistry.sol": {
+			"keccak256": "0xd3203b2abc1b0a62e9dcf3205e831c81e43b55e91c0577013315f742fb757170",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://83a1b1d96afb5979aaacdbe2ee0422c85f4a5a512688301e32319d9ad550ccc3",
-				"dweb:/ipfs/QmWjczpdAiykVn5LzTKYhxrxwwFNpgjQYJf8ScKkYjSpaL"
+				"bzz-raw://c14ed79bc1a8c7ec1aeb24ce978f6d8b450551d6c7b1bd7aef319a236e15fb35",
+				"dweb:/ipfs/QmPy11nMRZc5JTvnD1koEDLMLUpmoX5ep7uGv8Fi9FhETi"
 			]
 		}
 	},
