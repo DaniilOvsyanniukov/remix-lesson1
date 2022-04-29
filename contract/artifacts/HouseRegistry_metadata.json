@@ -138,11 +138,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x1815b12a75a0ef059692f679156e9b3d2b3201344ffc438b00d852d858b269f0",
+			"keccak256": "0xb97e8b8a90668090ac002f6b50dd5763ad2e6646f66a2226b8588908cf1ce10a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://361466c8c881f6f43c9f4d123e0f0f3f163e1c938b1dfb8b4c29bf2c837abd89",
-				"dweb:/ipfs/QmPZT2VZmAChgvanWJe1T7tKquWiwiU1AU8VFrczvBgKwN"
+				"bzz-raw://e284ffa78c071a526dcd2070b76cc4df84375b39e434e06aec835692627d12e7",
+				"dweb:/ipfs/Qmf2pVNGsbMwm6xLx4NMBe39vNbXfoN2ekcg9rbbHhiHjM"
 			]
 		}
 	},

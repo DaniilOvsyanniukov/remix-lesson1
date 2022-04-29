@@ -18,9 +18,9 @@ contract HouseRegistry {
     mapping(uint => House) public houses;
 
     function listHouse (uint _price, uint _area, address _sellerAddress, string memory _houseAddress) public returns (uint) {
-        require(_price * _area > 0);
+        require(_price * _area > 0, "value cannot be null");
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
-        require(houseId != houses[houseId].id);
+        require(houseId != houses[houseId].id, "this houseId already exists");
         houses[houseId] = House(houseId, _price, _area, _sellerAddress, _houseAddress);
         emit AddNewHouse(houseId, _sellerAddress, _price, _houseAddress);
         return houseId;
