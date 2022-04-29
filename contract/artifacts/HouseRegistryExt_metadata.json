@@ -108,6 +108,29 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_area",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_houseAddress",
+						"type": "string"
+					}
+				],
+				"name": "listHouseSimple",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -123,7 +146,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contract/HouseRegistry.sol": "HouseRegistry"
+			"contract/HouseRegistryExt.sol": "HouseRegistryExt"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -143,6 +166,14 @@
 			"urls": [
 				"bzz-raw://361466c8c881f6f43c9f4d123e0f0f3f163e1c938b1dfb8b4c29bf2c837abd89",
 				"dweb:/ipfs/QmPZT2VZmAChgvanWJe1T7tKquWiwiU1AU8VFrczvBgKwN"
+			]
+		},
+		"contract/HouseRegistryExt.sol": {
+			"keccak256": "0x7162101ee09b860ffa8750f31c8485e941a83847130ed054a2a2200fb784e0b8",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://687b67b51785f07fe24ece4cd37efb493101acd0dbab67e8bb28f74468f38fd1",
+				"dweb:/ipfs/QmUyzGzAPne8udG7os12KBybPeWrL2ExuWYBtsVrtMe8U7"
 			]
 		}
 	},
