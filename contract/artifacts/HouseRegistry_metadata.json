@@ -40,6 +40,44 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "houseId",
+						"type": "uint256"
+					}
+				],
+				"name": "delistHouse",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					}
+				],
+				"name": "getCheapHouseIds",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -49,6 +87,11 @@
 					{
 						"internalType": "uint256",
 						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "serialNumber",
 						"type": "uint256"
 					},
 					{
@@ -70,6 +113,11 @@
 						"internalType": "string",
 						"name": "houseAddress",
 						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isdelistedHouse",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -138,11 +186,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0xb97e8b8a90668090ac002f6b50dd5763ad2e6646f66a2226b8588908cf1ce10a",
+			"keccak256": "0x306758fd492595b5e2567f89447bf12def25583cb7fe44889683547fbebafe3a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e284ffa78c071a526dcd2070b76cc4df84375b39e434e06aec835692627d12e7",
-				"dweb:/ipfs/Qmf2pVNGsbMwm6xLx4NMBe39vNbXfoN2ekcg9rbbHhiHjM"
+				"bzz-raw://cb22e7c08a630bcf931d951bdac0276c07c6949cc1de2f382354ddc801a0007c",
+				"dweb:/ipfs/QmVYq7gpkTgT2PmHp5NX7FS2t44RmL8BLSPVqRJi13K1pu"
 			]
 		}
 	},

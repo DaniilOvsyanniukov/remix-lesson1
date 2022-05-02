@@ -40,6 +40,44 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "houseId",
+						"type": "uint256"
+					}
+				],
+				"name": "delistHouse",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "cost",
+						"type": "uint256"
+					}
+				],
+				"name": "getCheapHouseIds",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -49,6 +87,11 @@
 					{
 						"internalType": "uint256",
 						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "serialNumber",
 						"type": "uint256"
 					},
 					{
@@ -70,6 +113,11 @@
 						"internalType": "string",
 						"name": "houseAddress",
 						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isdelistedHouse",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -161,19 +209,19 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x724b58eea5ae92891c66b19288f09e2309bfcecffb314e5d2dbd12556091ee07",
+			"keccak256": "0x306758fd492595b5e2567f89447bf12def25583cb7fe44889683547fbebafe3a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://0831a29f1cb9b5885d9c606735c049a39964d68de2d000ef23757dbadae0f6e3",
-				"dweb:/ipfs/QmVEz9WLErPMGYPwVH948cuPrspdHK38zDTe7N79fVgFAZ"
+				"bzz-raw://cb22e7c08a630bcf931d951bdac0276c07c6949cc1de2f382354ddc801a0007c",
+				"dweb:/ipfs/QmVYq7gpkTgT2PmHp5NX7FS2t44RmL8BLSPVqRJi13K1pu"
 			]
 		},
 		"contract/HouseRegistryExt.sol": {
-			"keccak256": "0xb0065ede0663a1fc191d54ee056a59a8a5ec393e625b47ff5ac735ff95a83e86",
+			"keccak256": "0x8b28daab9da1dcaf2bb93087eea9bdce55cf6387e7e48d354f0bb90ba7c37ca3",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://847721baac7df224c5a64d44f88eded9bf286b8214d9486bdef73bedc917f640",
-				"dweb:/ipfs/QmQuW6XxbHEFyKHB3ALCLRGJgf6FjGFAWaFtdmC8uNoDYb"
+				"bzz-raw://0bfd9a97834bf5362cc741b8726325d0108a46a5d64caa2ff9bb0f838531236e",
+				"dweb:/ipfs/QmNNCUwWS3t8ueUtrP1qQ7fE7Rf43888pjH1QbpECPjHE3"
 			]
 		}
 	},
