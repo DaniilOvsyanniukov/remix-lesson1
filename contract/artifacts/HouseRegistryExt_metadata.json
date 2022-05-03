@@ -209,11 +209,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x306758fd492595b5e2567f89447bf12def25583cb7fe44889683547fbebafe3a",
+			"keccak256": "0x4d82f650f190d885a9d6861d9fe9abd06ad249efc0b7e1b18dfd7aa29c278d5a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://cb22e7c08a630bcf931d951bdac0276c07c6949cc1de2f382354ddc801a0007c",
-				"dweb:/ipfs/QmVYq7gpkTgT2PmHp5NX7FS2t44RmL8BLSPVqRJi13K1pu"
+				"bzz-raw://e1f15cafa4b2f1f70228ce9066c2fffde3609f4d94ffc970030b49a035119dba",
+				"dweb:/ipfs/QmbXgw12J7LLtLKXjLN2XK9VFCCtqJcdZ8BsbK2mnD3CbK"
 			]
 		},
 		"contract/HouseRegistryExt.sol": {

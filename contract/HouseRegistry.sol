@@ -6,7 +6,7 @@ contract HouseRegistry {
 
     uint digits = 5;
     uint modulus = 10 ** digits;
-    uint cooldownTime = 1 seconds;
+    uint cooldownTime = 1 days;
     uint countOfHouses = 1;
     uint private ownerAddCooldown;
 
@@ -26,6 +26,8 @@ contract HouseRegistry {
     }
 
     event AddNewHouse (uint houseId, address _sellerAddress, uint price, string houseAddress);
+
+    uint[] private houseIndex;
  
     mapping(uint => House) public houses;
 
@@ -38,25 +40,30 @@ contract HouseRegistry {
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
         require(houseId != houses[houseId].id, "this houseId already exists");
         houses[houseId] = House(houseId, countOfHouses, _price, _area, _sellerAddress, _houseAddress, false);
-        _ownerCooldown(block.timestamp + cooldownTime);
+         _ownerCooldown(block.timestamp + cooldownTime);
+        houseIndex.push(houseId);
         countOfHouses++;
         emit AddNewHouse(houseId, _sellerAddress, _price, _houseAddress);
         return houseId;
     }
 
-        function delistHouse(uint houseId) public returns (string memory){
+    function delistHouse(uint houseId) public returns (string memory){
         require(houses[houseId].sellerAddress == msg.sender, "You do not have access to delete this house");
         houses[houseId].isdelistedHouse = true;
         return "delist was successful";
     }
 
-        function getCheapHouseIds(uint cost) external payable returns (uint[] memory){
-            uint[] memory filteredHouses;
-            uint count = 0;
-        for(uint i = 1; i <= countOfHouses; i++){
-            if(houses[i].price <= cost){
-                filteredHouses[count] = houses[i].id;
+    function getCheapHouseIds(uint cost) external view returns (uint[]memory){
+        uint count = 0;
+        for(uint i = 0; i < houseIndex.length; i++){
+            if(houses[houseIndex[i]].price < cost){
                 count++;
+            }
+        }
+        uint[] memory filteredHouses = new uint[](count);
+        for(uint i = 0; i < houseIndex.length; i++){
+            if(houses[houseIndex[i]].price < cost){
+                filteredHouses[i] = houses[houseIndex[i]].id;
             }
         }
         return filteredHouses;
@@ -66,7 +73,5 @@ contract HouseRegistry {
         uint houseId = uint(keccak256(abi.encodePacked(_sellerAddress, _area, _houseAddress)));
         return houseId % modulus;
     }
-
-
 
 }
