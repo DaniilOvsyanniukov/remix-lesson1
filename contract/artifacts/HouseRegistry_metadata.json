@@ -110,6 +110,11 @@
 						"type": "address"
 					},
 					{
+						"internalType": "address",
+						"name": "bayerAddress",
+						"type": "address"
+					},
+					{
 						"internalType": "string",
 						"name": "houseAddress",
 						"type": "string"
@@ -186,11 +191,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0xb8f6ce8ef1cb6485177751de0a8afb577f1e6a2de38e4e7663a31f77f99bdfe5",
+			"keccak256": "0x89bf9ea8b55fdf8cbccb76f9a66841e57c1d20987210049da26ad3a957add45b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c2fc138525f10a2d56f3ef20deecf24199b85de38dffdb30529633637abf8642",
-				"dweb:/ipfs/QmVm33a5qech9RR4tptYjWsB7kEkpeevF2qQQ7zwAQVKzW"
+				"bzz-raw://d97717098a270c9ea6f469fc3d1c8423b0cc5e52dee6e9c8ad9a5f27ec644187",
+				"dweb:/ipfs/QmTkrKzyZiTzc23f8gBG4jHjy1aZTmQ6xL7KYjCXVG8pPw"
 			]
 		}
 	},

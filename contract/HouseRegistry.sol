@@ -16,6 +16,7 @@ contract HouseRegistry {
         uint price;
         uint area;
         address sellerAddress;
+        address bayerAddress;
         string houseAddress;
         bool isdelistedHouse;
     }
@@ -39,7 +40,7 @@ contract HouseRegistry {
         require(_price * _area > 0, "value cannot be null");
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
         require(houseId != houses[houseId].id, "this houseId already exists");
-        houses[houseId] = House(houseId, countOfHouses, _price, _area, _sellerAddress, _houseAddress, false);
+        houses[houseId] = House(houseId, countOfHouses, _price, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
          _ownerCooldown(block.timestamp + cooldownTime);
         houseIndex.push(houseId);
         countOfHouses++;

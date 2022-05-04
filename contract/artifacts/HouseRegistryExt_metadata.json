@@ -40,6 +40,19 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "_houseId",
+						"type": "uint256"
+					}
+				],
+				"name": "buyHouseWithETH",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "houseId",
 						"type": "uint256"
 					}
@@ -71,7 +84,7 @@
 						"type": "uint256[]"
 					}
 				],
-				"stateMutability": "payable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -107,6 +120,11 @@
 					{
 						"internalType": "address",
 						"name": "sellerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "bayerAddress",
 						"type": "address"
 					},
 					{
@@ -209,19 +227,19 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x4d82f650f190d885a9d6861d9fe9abd06ad249efc0b7e1b18dfd7aa29c278d5a",
+			"keccak256": "0x89bf9ea8b55fdf8cbccb76f9a66841e57c1d20987210049da26ad3a957add45b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e1f15cafa4b2f1f70228ce9066c2fffde3609f4d94ffc970030b49a035119dba",
-				"dweb:/ipfs/QmbXgw12J7LLtLKXjLN2XK9VFCCtqJcdZ8BsbK2mnD3CbK"
+				"bzz-raw://d97717098a270c9ea6f469fc3d1c8423b0cc5e52dee6e9c8ad9a5f27ec644187",
+				"dweb:/ipfs/QmTkrKzyZiTzc23f8gBG4jHjy1aZTmQ6xL7KYjCXVG8pPw"
 			]
 		},
 		"contract/HouseRegistryExt.sol": {
-			"keccak256": "0x8b28daab9da1dcaf2bb93087eea9bdce55cf6387e7e48d354f0bb90ba7c37ca3",
+			"keccak256": "0x1f0e7c99190f5a7ac79aa8ad05a60a106d2a8555bb10feade75494ea1141af13",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://0bfd9a97834bf5362cc741b8726325d0108a46a5d64caa2ff9bb0f838531236e",
-				"dweb:/ipfs/QmNNCUwWS3t8ueUtrP1qQ7fE7Rf43888pjH1QbpECPjHE3"
+				"bzz-raw://e067216075a86b0a2223d8d29413450047336f4aea2bb7e7678ce98f4e8742e4",
+				"dweb:/ipfs/Qmd1AyRay5pm8skMsPZ1N82F9YknLsV6tTrZEDrh9Fs8cK"
 			]
 		}
 	},
