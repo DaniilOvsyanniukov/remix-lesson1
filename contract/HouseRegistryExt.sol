@@ -12,7 +12,7 @@ contract HouseRegistryExt is HouseRegistry {
     function buyHouseWithETH(uint _houseId) external payable{
         require(msg.value >= houses[_houseId].price);
         payable(msg.sender).transfer(msg.value - houses[_houseId].price);
-        houses[_houseId].bayerAddress = msg.sender;
+        houses[_houseId].buyerAddress = msg.sender;
         payable(houses[_houseId].sellerAddress).transfer(msg.value);
     }
 }

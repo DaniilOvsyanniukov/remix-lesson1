@@ -111,7 +111,7 @@
 					},
 					{
 						"internalType": "address",
-						"name": "bayerAddress",
+						"name": "buyerAddress",
 						"type": "address"
 					},
 					{
@@ -191,11 +191,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x89bf9ea8b55fdf8cbccb76f9a66841e57c1d20987210049da26ad3a957add45b",
+			"keccak256": "0xb84e94917373e7cc498f457ce140054d912a6cd003ab1c515edaf664db4e2363",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d97717098a270c9ea6f469fc3d1c8423b0cc5e52dee6e9c8ad9a5f27ec644187",
-				"dweb:/ipfs/QmTkrKzyZiTzc23f8gBG4jHjy1aZTmQ6xL7KYjCXVG8pPw"
+				"bzz-raw://1f2f06aa3e9364b4c68fa8fa34d0e056a64872c39f0088b99a64cb23f6c079cf",
+				"dweb:/ipfs/QmNmdg9U6MhbQRkEtPpWnMw8qMkEvhQkh6r6ALsx8mgrNX"
 			]
 		}
 	},

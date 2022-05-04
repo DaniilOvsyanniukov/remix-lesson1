@@ -16,7 +16,7 @@ contract HouseRegistry {
         uint price;
         uint area;
         address sellerAddress;
-        address bayerAddress;
+        address buyerAddress;
         string houseAddress;
         bool isdelistedHouse;
     }
