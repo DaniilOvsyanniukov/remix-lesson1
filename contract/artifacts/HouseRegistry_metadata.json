@@ -28,6 +28,12 @@
 					},
 					{
 						"indexed": false,
+						"internalType": "uint256",
+						"name": "priceDai",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
 						"internalType": "string",
 						"name": "houseAddress",
 						"type": "string"
@@ -101,6 +107,11 @@
 					},
 					{
 						"internalType": "uint256",
+						"name": "priceDai",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
 						"name": "area",
 						"type": "uint256"
 					},
@@ -133,6 +144,11 @@
 					{
 						"internalType": "uint256",
 						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_priceDai",
 						"type": "uint256"
 					},
 					{
@@ -191,11 +207,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0xb84e94917373e7cc498f457ce140054d912a6cd003ab1c515edaf664db4e2363",
+			"keccak256": "0xed3eebe63b9b8d0e4d6e096f6f8aa45d146d0fa13287f388233da8cb472eb7d3",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://1f2f06aa3e9364b4c68fa8fa34d0e056a64872c39f0088b99a64cb23f6c079cf",
-				"dweb:/ipfs/QmNmdg9U6MhbQRkEtPpWnMw8qMkEvhQkh6r6ALsx8mgrNX"
+				"bzz-raw://57e25ae0f6d19411948f0201b3ba8171d6a262aa4f8636a0e1e2f53001d674c2",
+				"dweb:/ipfs/QmdRWzGUpeYFhg65utJud4iKPY8wd3rXswhDCi3Ep3FfPP"
 			]
 		}
 	},

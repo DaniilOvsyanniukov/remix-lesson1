@@ -14,6 +14,7 @@ contract HouseRegistry {
         uint id;
         uint serialNumber;
         uint price;
+        uint priceDai;
         uint area;
         address sellerAddress;
         address buyerAddress;
@@ -26,7 +27,7 @@ contract HouseRegistry {
         _;
     }
 
-    event AddNewHouse (uint houseId, address _sellerAddress, uint price, string houseAddress);
+    event AddNewHouse (uint houseId, address _sellerAddress, uint price, uint priceDai, string houseAddress);
 
     uint[] private houseIndex;
  
@@ -36,15 +37,15 @@ contract HouseRegistry {
         ownerAddCooldown = _newTime;
     }
 
-    function listHouse (uint _price, uint _area, address _sellerAddress, string memory _houseAddress) public returns (uint) {
+    function listHouse (uint _price, uint _priceDai, uint _area, address _sellerAddress, string memory _houseAddress) public returns (uint) {
         require(_price * _area > 0, "value cannot be null");
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
         require(houseId != houses[houseId].id, "this houseId already exists");
-        houses[houseId] = House(houseId, countOfHouses, _price, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
+        houses[houseId] = House(houseId, countOfHouses, _price, _priceDai, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
          _ownerCooldown(block.timestamp + cooldownTime);
         houseIndex.push(houseId);
         countOfHouses++;
-        emit AddNewHouse(houseId, _sellerAddress, _price, _houseAddress);
+        emit AddNewHouse(houseId, _sellerAddress, _price, _priceDai, _houseAddress);
         return houseId;
     }
 
