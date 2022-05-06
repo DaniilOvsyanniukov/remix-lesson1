@@ -26,9 +26,7 @@ contract HouseRegistryExt is HouseRegistry, ERC20 {
     }
 
     function buyHouseWithDai(uint _houseId) external payable {
-        require(msg.value >= houses[_houseId].priceDai);
-        payable(msg.sender).transfer(msg.value - houses[_houseId].priceDai);
-        houses[_houseId].buyerAddress = msg.sender;
-        payable(houses[_houseId].sellerAddress).transfer(msg.value);
+        require(transferFrom(msg.sender, houses[_houseId].sellerAddress, houses[_houseId].priceDai), "Transaction failed");
+        payable(houses[_houseId].buyerAddress = msg.sender);
     }
 }

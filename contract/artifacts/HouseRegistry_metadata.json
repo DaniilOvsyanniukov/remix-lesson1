@@ -207,11 +207,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0xed3eebe63b9b8d0e4d6e096f6f8aa45d146d0fa13287f388233da8cb472eb7d3",
+			"keccak256": "0x8762a357615acfbc37a2f91467144be12a2241fa76c89c64e847d3a32b49682b",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://57e25ae0f6d19411948f0201b3ba8171d6a262aa4f8636a0e1e2f53001d674c2",
-				"dweb:/ipfs/QmdRWzGUpeYFhg65utJud4iKPY8wd3rXswhDCi3Ep3FfPP"
+				"bzz-raw://a81ec478e436fd6c9915d48055fa62046d7d9e94f9ad35c0db732ff7ae2b7ecb",
+				"dweb:/ipfs/QmP9queKsxxQH5gg8kycqS4ogkZcGqiqcZMJSTHPKUT4Cj"
 			]
 		}
 	},
