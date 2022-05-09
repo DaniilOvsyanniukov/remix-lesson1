@@ -2,7 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-contract HouseRegistry {
+import "./token/HouseToken.sol";
+import "./token/ERC721.sol";
+
+contract HouseRegistry is HouseToken, ERC721{
 
     uint digits = 5;
     uint modulus = 10 ** digits;
@@ -10,17 +13,22 @@ contract HouseRegistry {
     uint countOfHouses = 1;
     uint private ownerAddCooldown;
 
-    struct House{
-        uint id;
-        uint serialNumber;
-        uint price;
-        uint priceDai;
-        uint area;
-        address sellerAddress;
-        address buyerAddress;
-        string houseAddress;
-        bool isdelistedHouse;
+    constructor() ERC721("HouseToken", "HT") {
+        // ERC20 tokens have 18 decimals 
+        // number of tokens minted = n * 10^18
     }
+
+    // struct House{
+    //     uint id;
+    //     uint serialNumber;
+    //     uint price;
+    //     uint priceDai;
+    //     uint area;
+    //     address sellerAddress;
+    //     address buyerAddress;
+    //     string houseAddress;
+    //     bool isdelistedHouse;
+    // }
 
     modifier canOwnerAdd() {
         require(ownerAddCooldown <= block.timestamp, "The owner cannot yet add a new home");
@@ -31,8 +39,8 @@ contract HouseRegistry {
 
     uint[] private houseIndex;
  
-    mapping(uint => House) public houses;
-
+    // mapping(uint => House) public houses;
+ 
     function _ownerCooldown(uint _newTime) internal {
         ownerAddCooldown = _newTime;
     }
