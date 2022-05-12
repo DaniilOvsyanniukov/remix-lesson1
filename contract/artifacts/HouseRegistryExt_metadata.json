@@ -46,6 +46,43 @@
 				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_houseId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_serialNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_priceDai",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "_houseAddress",
+						"type": "string"
+					}
+				],
+				"name": "AddNewTokenHouse",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "owner",
@@ -90,6 +127,55 @@
 					}
 				],
 				"name": "ApprovalForAll",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_houseId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_serialNumber",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_priceDai",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "_area",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_sellerAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "_houseAddress",
+						"type": "string"
+					}
+				],
+				"name": "GetHouseTokenInfo",
 				"type": "event"
 			},
 			{
@@ -289,61 +375,8 @@
 					}
 				],
 				"name": "getHouseInfo",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "serialNumber",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "price",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "priceDai",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "area",
-								"type": "uint256"
-							},
-							{
-								"internalType": "address",
-								"name": "sellerAddress",
-								"type": "address"
-							},
-							{
-								"internalType": "address",
-								"name": "buyerAddress",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "houseAddress",
-								"type": "string"
-							},
-							{
-								"internalType": "bool",
-								"name": "isdelistedHouse",
-								"type": "bool"
-							}
-						],
-						"internalType": "struct ERC721.House",
-						"name": "",
-						"type": "tuple"
-					}
-				],
-				"stateMutability": "view",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -771,11 +804,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x9532bea226954bdbfff1c77b34a7acbea5a8bb8019882a6e6a42a62be02a6d8d",
+			"keccak256": "0x155e27014470aa4dfe215a3ad4c3076262eec485be2572e942e4fd06eb4d897a",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://adc0c9292ed2b5f2b573417d9f48433a4b7c94f23250c7f9acb58184692618c9",
-				"dweb:/ipfs/QmVawHKUSSrchvP38JBDgcLQVzWbUBiZYKoSzhz5BwYRD4"
+				"bzz-raw://006e45bd6efedbfc13a7cd5f0ab733cd80729d7972f121b1367beeaab58f69d6",
+				"dweb:/ipfs/QmYB2MDAbe3vyhwRYxYpiZNwqDSShE3PoXfbEVMyQLyDHs"
 			]
 		},
 		"contract/HouseRegistryExt.sol": {
@@ -787,19 +820,19 @@
 			]
 		},
 		"contract/token/ERC721.sol": {
-			"keccak256": "0x0a89618be9e1957f64d22d013062d5712eedfbf281a7d0b2f393d5cf257a8094",
+			"keccak256": "0xfd2fe009b6a20cb745bde97c265a1f4e123bdbf49384e235f69ffe2102118a99",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://73bc2c42a2bb86b984d2e700a231a9b3cf06fc577e2b42035cb1da3b71d33234",
-				"dweb:/ipfs/QmWPc8d4NmN4V6pn1GfbyEV1omnp5DaPdMvSvizsLcR3t3"
+				"bzz-raw://cd5ab5ef09ddb59a0dcb669d021b91b393fbe8a1b59bbeef240b37764204f04f",
+				"dweb:/ipfs/QmSX7sCzMdAmVsmCWY46tM6wuLVnwQ15feR7K2ZeWt7Krw"
 			]
 		},
 		"contract/token/HouseToken.sol": {
-			"keccak256": "0xa18fb0f9aa274961892a92b91d7bcf14b654599b6279cc21bdd0b62c493a86b7",
+			"keccak256": "0x85f61a7669cc7adc0203c031689846d4a024a2d0fba5c410ea1f041447c49dfd",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9eee5ce2b5cad762c9cf1ac0f39709810f91508f661e85d82d24cc46bb9174e7",
-				"dweb:/ipfs/QmebzCtXndoXyHS6iMrZRxFxYSrZCw7kk6ziBnGy5bvhqN"
+				"bzz-raw://c53416e4007157187a797e33ce13bfc7f95e96d7ea6a3250d1d0211c32659f77",
+				"dweb:/ipfs/QmY3apmfp8xDRe5PCfx8eQSFDzgWAnKjaoasHLsK8A5csK"
 			]
 		},
 		"contract/token/IERC20.sol": {

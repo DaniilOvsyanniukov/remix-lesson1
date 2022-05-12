@@ -3,20 +3,41 @@
 
 pragma solidity ^0.8.0;
 
-import "./IERC721.sol";
+import "./ERC721.sol";
+import "./IHouseToken.sol";
 
-interface HouseToken is IERC721 {
+contract HouseToken is ERC721, IHouseToken {
 
-    function addHouse(uint _houseId, uint _serialNumber, uint _price, uint _priceDai, uint _area, address _sellerAddress, string memory _houseAddress) external;
+    uint _id;
+    uint _serialNumber;
+    uint _price;
+    uint _priceDai;
+    uint _area;
+    address _sellerAddress;
+    address _buyerAddress;
+    string _houseAddress;
+    bool _isdelistedHouse;
 
-    function setDelistHouse(uint _houseId) external;
+    constructor(uint id_, uint serialNumber_, uint price_, uint priceDai_, uint area_, address sellerAddress_, address buyerAddress_, string  memory houseAddress_, bool isdelistedHouse_) ERC721("HouseToken", "HT") {
+       _id=id_;
+       _serialNumber=serialNumber_;
+       _price=price_;
+       _priceDai=priceDai_;
+       _area=area_;
+       _sellerAddress=sellerAddress_;
+       _buyerAddress=buyerAddress_;
+       _houseAddress=houseAddress_;
+       _isdelistedHouse=isdelistedHouse_;
+    }
 
-    function getHouseInfo(uint _houseId) external;
+    function _delistHouse () external override {
+       _isdelistedHouse = true;
+    }
+    function _getPrice() external view override returns(uint){
+        return _price;
+    }
+    function _getId() external view override returns(uint){
+        return _id;
+    }  
 
-    function setbuyerAddress(uint _houseId, address _buyerAddress ) external;
-
-    event AddNewTokenHouse(uint _houseId, uint _serialNumber, uint _price, uint _priceDai, string _houseAddress);
-
-    event GetHouseTokenInfo(uint _houseId, uint _serialNumber, uint _price, uint _priceDai, uint _area, address _sellerAddress, string _houseAddress);
-    
 }

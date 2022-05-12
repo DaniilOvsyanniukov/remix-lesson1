@@ -5,7 +5,6 @@ pragma solidity ^0.8.0;
 
 import "./IERC721.sol";
 import "./IERC721Receiver.sol";
-import "./HouseToken.sol";
 import "./extensions/IERC721Metadata.sol";
 import "../../utils/Address.sol";
 import "../../utils/Context.sol";
@@ -17,7 +16,7 @@ import "../../utils/introspection/ERC165.sol";
  * the Metadata extension, but not including the Enumerable extension, which is available separately as
  * {ERC721Enumerable}.
  */
-contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, HouseToken {
+contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     using Address for address;
     using Strings for uint256;
 
@@ -26,26 +25,6 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, HouseToken {
 
     // Token symbol
     string private _symbol;
-
-    /**
-     * @dev Initializes the contract by setting a `name` and a `symbol` to the token collection.
-     */
-    constructor(string memory name_, string memory symbol_) {
-        _name = name_;
-        _symbol = symbol_;
-        }
-
-    struct House{
-        uint id;
-        uint serialNumber;
-        uint price;
-        uint priceDai;
-        uint area;
-        address sellerAddress;
-        address buyerAddress;
-        string houseAddress;
-        bool isdelistedHouse;
-    }
 
     // Mapping from token ID to owner address
     mapping(uint256 => address) private _owners;
@@ -59,30 +38,13 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, HouseToken {
     // Mapping from owner to operator approvals
     mapping(address => mapping(address => bool)) private _operatorApprovals;
 
-    mapping(uint => House) public houses;
-
-
-
-    // Мои функции
-    function addHouse(uint _houseId, uint _serialNumber, uint _price, uint _priceDai, uint _area, address _sellerAddress, string memory _houseAddress) external override {
-        require(_houseId != houses[_houseId].id, "this houseId already exists");
-        houses[_houseId] = House(_houseId, _serialNumber, _price, _priceDai, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
-        emit AddNewTokenHouse(_houseId, _serialNumber, _price, _priceDai, _houseAddress);
+    /**
+     * @dev Initializes the contract by setting a `name` and a `symbol` to the token collection.
+     */
+    constructor(string memory name_, string memory symbol_) {
+        _name = name_;
+        _symbol = symbol_;
     }
-
-    function getHouseInfo(uint _houseId) external override {
-        emit GetHouseTokenInfo(houses[_houseId].id, houses[_houseId].serialNumber, houses[_houseId].price, houses[_houseId].priceDai, houses[_houseId].area, houses[_houseId].sellerAddress, houses[_houseId].houseAddress);
-    }
-
-    function setDelistHouse(uint _houseId) external override {
-         houses[_houseId].isdelistedHouse = true;
-    }
-
-    function setbuyerAddress(uint _houseId, address _buyerAddress ) external override {
-         houses[_houseId].buyerAddress = _buyerAddress;
-    }
-
-    // Конец моих функций
 
     /**
      * @dev See {IERC165-supportsInterface}.

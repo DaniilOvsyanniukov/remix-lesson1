@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 
 import "./HouseRegistry.sol";
 import "./token/IERC20.sol";
+import "./token/IHouseToken.sol";
 
 contract HouseRegistryExt is HouseRegistry {
 
@@ -11,8 +12,8 @@ contract HouseRegistryExt is HouseRegistry {
         listHouse(_price, _priceDai, _area, msg.sender, _houseAddress);
     }
     function buyHouseWithETH(uint _houseId) external payable{
-        require(msg.value >= houses[_houseId].price);
-        payable(msg.sender).transfer(msg.value - houses[_houseId].price);
+        require(msg.value >= (houses[_houseId])._getPrice());
+        payable(msg.sender).transfer(msg.value - (houses[_houseId])._getPrice());
         houses[_houseId].buyerAddress = msg.sender;
         payable(houses[_houseId].sellerAddress).transfer(msg.value);
     }

@@ -3,9 +3,10 @@
 pragma solidity ^0.8.0;
 
 import "./token/HouseToken.sol";
-import "./token/ERC721.sol";
+import "./token/IHouseToken.sol";
 
-contract HouseRegistry is HouseToken, ERC721{
+
+contract HouseRegistry is HouseToken { 
 
     uint digits = 5;
     uint modulus = 10 ** digits;
@@ -13,22 +14,18 @@ contract HouseRegistry is HouseToken, ERC721{
     uint countOfHouses = 1;
     uint private ownerAddCooldown;
 
-    constructor() ERC721("HouseToken", "HT") {
-        // ERC20 tokens have 18 decimals 
-        // number of tokens minted = n * 10^18
-    }
+    uint id;
+    uint serialNumber;
+    uint price;
+    uint priceDai;
+    uint area;
+    address sellerAddress;
+    address buyerAddress;
+    string houseAddress;
+    bool isdelistedHouse;
 
-    // struct House{
-    //     uint id;
-    //     uint serialNumber;
-    //     uint price;
-    //     uint priceDai;
-    //     uint area;
-    //     address sellerAddress;
-    //     address buyerAddress;
-    //     string houseAddress;
-    //     bool isdelistedHouse;
-    // }
+    constructor () HouseToken (id, serialNumber, price, priceDai, area, sellerAddress, buyerAddress, houseAddress, isdelistedHouse){
+    }
 
     modifier canOwnerAdd() {
         require(ownerAddCooldown <= block.timestamp, "The owner cannot yet add a new home");
@@ -36,10 +33,9 @@ contract HouseRegistry is HouseToken, ERC721{
     }
 
     event AddNewHouse (uint houseId, address _sellerAddress, uint price, uint priceDai, string houseAddress);
-
+    
     uint[] private houseIndex;
- 
-    // mapping(uint => House) public houses;
+    mapping(uint => address) public houses;
  
     function _ownerCooldown(uint _newTime) internal {
         ownerAddCooldown = _newTime;
@@ -48,8 +44,11 @@ contract HouseRegistry is HouseToken, ERC721{
     function listHouse (uint _price, uint _priceDai, uint _area, address _sellerAddress, string memory _houseAddress) public returns (uint) {
         require(_price * _area > 0, "value cannot be null");
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
-        require(houseId != houses[houseId].id, "this houseId already exists");
-        houses[houseId] = House(houseId, countOfHouses, _price, _priceDai, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
+        bool idExamination = false;
+        if (houses[houseId] != _sellerAddress) idExamination = true;
+        require(idExamination, "this houseId already exists");
+        HouseToken house = new HouseToken(houseId, countOfHouses, _price, _priceDai, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
+        houses[houseId] = address(house);
          _ownerCooldown(block.timestamp + cooldownTime);
         houseIndex.push(houseId);
         countOfHouses++;
@@ -57,23 +56,23 @@ contract HouseRegistry is HouseToken, ERC721{
         return houseId;
     }
 
-    function delistHouse(uint houseId) public returns (string memory){
-        require(houses[houseId].sellerAddress == msg.sender, "You do not have access to delete this house");
-        houses[houseId].isdelistedHouse = true;
+    function delistHouse(uint houseId) public view returns (string memory){
+        require(houses[houseId] == msg.sender, "You do not have access to delete this house");
+        HouseToken(houses[houseId])._delistHouse;
         return "delist was successful";
     }
 
     function getCheapHouseIds(uint cost) external view returns (uint[]memory){
         uint count = 0;
         for(uint i = 0; i < houseIndex.length; i++){
-            if(houses[houseIndex[i]].price < cost){
+            if(HouseToken(houses[houseIndex[i]])._getPrice() < cost){
                 count++;
             }
         }
         uint[] memory filteredHouses = new uint[](count);
         for(uint i = 0; i < houseIndex.length; i++){
-            if(houses[houseIndex[i]].price < cost){
-                filteredHouses[i] = houses[houseIndex[i]].id;
+            if(HouseToken(houses[houseIndex[i]])._getPrice() < cost){
+                filteredHouses[i] = HouseToken(houses[houseIndex[i]])._getId();
             }
         }
         return filteredHouses;

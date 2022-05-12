@@ -6,41 +6,55 @@
 	"output": {
 		"abi": [
 			{
-				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "_houseId",
+						"name": "id_",
 						"type": "uint256"
 					},
 					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "_serialNumber",
+						"name": "serialNumber_",
 						"type": "uint256"
 					},
 					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "_price",
+						"name": "price_",
 						"type": "uint256"
 					},
 					{
-						"indexed": false,
 						"internalType": "uint256",
-						"name": "_priceDai",
+						"name": "priceDai_",
 						"type": "uint256"
 					},
 					{
-						"indexed": false,
+						"internalType": "uint256",
+						"name": "area_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "sellerAddress_",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "buyerAddress_",
+						"type": "address"
+					},
+					{
 						"internalType": "string",
-						"name": "_houseAddress",
+						"name": "houseAddress_",
 						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isdelistedHouse_",
+						"type": "bool"
 					}
 				],
-				"name": "AddNewTokenHouse",
-				"type": "event"
+				"stateMutability": "nonpayable",
+				"type": "constructor"
 			},
 			{
 				"anonymous": false,
@@ -96,55 +110,6 @@
 				"anonymous": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "_houseId",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "_serialNumber",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "_price",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "_priceDai",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "_area",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "_sellerAddress",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "string",
-						"name": "_houseAddress",
-						"type": "string"
-					}
-				],
-				"name": "GetHouseTokenInfo",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
 						"indexed": true,
 						"internalType": "address",
 						"name": "from",
@@ -167,46 +132,36 @@
 				"type": "event"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_houseId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_serialNumber",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_price",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_priceDai",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_area",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_sellerAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "_houseAddress",
-						"type": "string"
-					}
-				],
-				"name": "addHouse",
+				"inputs": [],
+				"name": "_delistHouse",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_getId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -239,7 +194,7 @@
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "balance",
+						"name": "",
 						"type": "uint256"
 					}
 				],
@@ -258,24 +213,11 @@
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "operator",
+						"name": "",
 						"type": "address"
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_houseId",
-						"type": "uint256"
-					}
-				],
-				"name": "getHouseInfo",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -303,6 +245,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -314,7 +269,7 @@
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "owner",
+						"name": "",
 						"type": "address"
 					}
 				],
@@ -381,42 +336,11 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "_approved",
+						"name": "approved",
 						"type": "bool"
 					}
 				],
 				"name": "setApprovalForAll",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_houseId",
-						"type": "uint256"
-					}
-				],
-				"name": "setDelistHouse",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "_houseId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "address",
-						"name": "_buyerAddress",
-						"type": "address"
-					}
-				],
-				"name": "setbuyerAddress",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -435,6 +359,38 @@
 						"internalType": "bool",
 						"name": "",
 						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenURI",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -468,34 +424,43 @@
 			"kind": "dev",
 			"methods": {
 				"approve(address,uint256)": {
-					"details": "Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event."
+					"details": "See {IERC721-approve}."
 				},
 				"balanceOf(address)": {
-					"details": "Returns the number of tokens in ``owner``'s account."
+					"details": "See {IERC721-balanceOf}."
 				},
 				"getApproved(uint256)": {
-					"details": "Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist."
+					"details": "See {IERC721-getApproved}."
 				},
 				"isApprovedForAll(address,address)": {
-					"details": "Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}"
+					"details": "See {IERC721-isApprovedForAll}."
+				},
+				"name()": {
+					"details": "See {IERC721Metadata-name}."
 				},
 				"ownerOf(uint256)": {
-					"details": "Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist."
+					"details": "See {IERC721-ownerOf}."
 				},
 				"safeTransferFrom(address,address,uint256)": {
-					"details": "Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+					"details": "See {IERC721-safeTransferFrom}."
 				},
 				"safeTransferFrom(address,address,uint256,bytes)": {
-					"details": "Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
+					"details": "See {IERC721-safeTransferFrom}."
 				},
 				"setApprovalForAll(address,bool)": {
-					"details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event."
+					"details": "See {IERC721-setApprovalForAll}."
 				},
 				"supportsInterface(bytes4)": {
-					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
+					"details": "See {IERC165-supportsInterface}."
+				},
+				"symbol()": {
+					"details": "See {IERC721Metadata-symbol}."
+				},
+				"tokenURI(uint256)": {
+					"details": "See {IERC721Metadata-tokenURI}."
 				},
 				"transferFrom(address,address,uint256)": {
-					"details": "Transfers `tokenId` token from `from` to `to`. WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event."
+					"details": "See {IERC721-transferFrom}."
 				}
 			},
 			"version": 1
@@ -522,12 +487,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"contract/token/HouseToken.sol": {
-			"keccak256": "0x85f61a7669cc7adc0203c031689846d4a024a2d0fba5c410ea1f041447c49dfd",
+		"contract/token/ERC721.sol": {
+			"keccak256": "0xa09d1e4fdf2f8eadd18cf4dd184f2c2284cba142d7a54c5a81783a7d1bb9dfdd",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c53416e4007157187a797e33ce13bfc7f95e96d7ea6a3250d1d0211c32659f77",
-				"dweb:/ipfs/QmY3apmfp8xDRe5PCfx8eQSFDzgWAnKjaoasHLsK8A5csK"
+				"bzz-raw://01d05a262dae89033575135b533cff4e8a41b8fd9034bcf28c6b7c10f82190e3",
+				"dweb:/ipfs/QmTGM8EAgu4rdgNYNpj5vxjLCf5tbC5rq1j8qg8LxBGu5V"
+			]
+		},
+		"contract/token/HouseToken.sol": {
+			"keccak256": "0x824df99bbda0a299fbd856efdd1e54b3fbf16078bd75bc2fbf279dfa6d022026",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e4c011f604954218bdab3821dbbdc7f15ff247740cf2c78c87d1c033330e7576",
+				"dweb:/ipfs/QmURP7JWpjPYiVZ8q3dZAHe2RyRYF5p3838ynAJWrAPF2V"
 			]
 		},
 		"contract/token/IERC721.sol": {
@@ -536,6 +509,62 @@
 			"urls": [
 				"bzz-raw://060f9bd78dd08332460125823cea9a73444fbafe506f212f23d4164df8c38d80",
 				"dweb:/ipfs/Qma6zYeh5Rm5gfGTy1f2qMH6KGeAEuKER5KvfEf1NnHCPq"
+			]
+		},
+		"contract/token/IERC721Receiver.sol": {
+			"keccak256": "0xf519c884616195e754dcc17993b01095b97ee7c63f695a8b99d351a143195201",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://31d5c889c1bc19d04642d2d6cd3b58bc557f594b9fa67ec05d896366da5f51a4",
+				"dweb:/ipfs/QmVVn4QxiSBBw1hgM7wuA5np2kGiVnn3P59zowzEuhqbyR"
+			]
+		},
+		"contract/token/IHouseToken.sol": {
+			"keccak256": "0xd5284a137bad949493c27f2fe9458d9b839d94d1f592484c10da10262ba2ab9b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://77574e0621d3e591ca9e594b688e9b381ec7846a44b379ccf7404098e57f8867",
+				"dweb:/ipfs/QmfWKqn68RaitdJqPEAKmEdDtyFKwTofWYWHwqTku1S9bb"
+			]
+		},
+		"contract/token/extensions/IERC721Metadata.sol": {
+			"keccak256": "0x06e9d388db2935fe9f8640453d5dbaf19d7f57b927b48b85026634e4d026542b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://03691384333d6967f62b0e5631c8aa38dc073db650c222e2b4302c4c08d3d146",
+				"dweb:/ipfs/Qme8spUcmvg2s84GFFwpHtd2uHn9DwgVrtUhg5ew3LauBd"
+			]
+		},
+		"utils/Address.sol": {
+			"keccak256": "0x4f82ac554df2b88092b0dff60e01918ddb7b4d34935150ad5a82c03ce83ed225",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9d452f560e273b2c7c5b83bb29826ee164deb9aac4a0489452368f303227edd7",
+				"dweb:/ipfs/QmTj2yeCDKwy4pa4oNZ1b5NeQf9X6X4cn5k4pL9EqTpJs5"
+			]
+		},
+		"utils/Context.sol": {
+			"keccak256": "0x9c22fa9375b8b5c840785989cefb0fb93bcef5acf944de3cada11eea1846668b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fec64cd92f82a727d6029d5c974fc10fae5e5de581a3e1716c0fbea77848440d",
+				"dweb:/ipfs/QmcP1Y9S8XoBuncvBYBZugpy2oyCZT7iqNtVyjFmozkNJh"
+			]
+		},
+		"utils/Strings.sol": {
+			"keccak256": "0x0829b081483a3608ba02133a8a0a962923d615eeee81f241b6060729b116ff34",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://724cf3f3fe534f1b1125481575f4a67995ca7b5208f09d816bad1f8f88ea3982",
+				"dweb:/ipfs/QmRpW8ePw8kXiLAL8NoKpxqxmFmMNLM748LADun5zDAen7"
+			]
+		},
+		"utils/introspection/ERC165.sol": {
+			"keccak256": "0x847fd3fb0bb6946e86e0da7060f08df5961ec874b4f93de2438b835b92edfd08",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4b85ed4a7ffd8067845fc390c896e4f49f78d4de1be291b76eda465f941e4e0c",
+				"dweb:/ipfs/QmbvCXfbTtEq4C1hpVjHGWCUVC5KdZHTCADWDwLYrYJZ88"
 			]
 		},
 		"utils/introspection/IERC165.sol": {
