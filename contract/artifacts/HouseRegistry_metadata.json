@@ -253,6 +253,25 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "houseId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTokenId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -575,11 +594,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0x810b0fc0654045162b174e25e4e486471f03d2070e1a0189182717db3745fae2",
+			"keccak256": "0xb32bf61ed06a81fe4da6c79399d85c615a35a905f25c00dd8890802ee227bd41",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://cb1aecf632fd8d2a485844c986940fb712290a65d6ee9b718b572cf497f052b4",
-				"dweb:/ipfs/QmcbftbvEMj8nXjQcv5UBQcxJNVm8zRzpAwToVFr9zunB1"
+				"bzz-raw://dd1f73cde76ad6c92240e9101a7ddb365ba00f6cc5d1246b1ecb538c2d1ef87d",
+				"dweb:/ipfs/QmdRfBcyPGwTnRoBsHXmE3mDzNhtxyFeCSTEpfha4GwJTe"
 			]
 		},
 		"contract/token/ERC721.sol": {

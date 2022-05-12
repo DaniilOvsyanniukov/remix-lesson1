@@ -44,9 +44,7 @@ contract HouseRegistry is HouseToken {
     function listHouse (uint _price, uint _priceDai, uint _area, address _sellerAddress, string memory _houseAddress) public returns (uint) {
         require(_price * _area > 0, "value cannot be null");
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
-        bool idExamination = false;
-        if (houses[houseId] != _sellerAddress) idExamination = true;
-        require(idExamination, "this houseId already exists");
+        // require(getTokenId(houseId) > 0, "this houseId already exists");
         HouseToken house = new HouseToken(houseId, countOfHouses, _price, _priceDai, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
         houses[houseId] = address(house);
          _ownerCooldown(block.timestamp + cooldownTime);
@@ -54,6 +52,11 @@ contract HouseRegistry is HouseToken {
         countOfHouses++;
         emit AddNewHouse(houseId, _sellerAddress, _price, _priceDai, _houseAddress);
         return houseId;
+
+    }
+
+    function getTokenId (uint houseId) public view returns (uint){
+        return HouseToken(houses[houseId])._getId();
     }
 
     function delistHouse(uint houseId) public view returns (string memory){
