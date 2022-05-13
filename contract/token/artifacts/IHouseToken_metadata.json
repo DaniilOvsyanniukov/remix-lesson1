@@ -81,6 +81,19 @@
 				"type": "event"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "buyerAddress",
+						"type": "address"
+					}
+				],
+				"name": "_changeBuyerAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "_delistHouse",
 				"outputs": [],
@@ -108,6 +121,19 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_getSellerAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -391,11 +417,11 @@
 			]
 		},
 		"contract/token/IHouseToken.sol": {
-			"keccak256": "0xd5284a137bad949493c27f2fe9458d9b839d94d1f592484c10da10262ba2ab9b",
+			"keccak256": "0x29d1f27da48fd39117374b62546dbb359ff5d3b18fa32d78330750a9d125e627",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://77574e0621d3e591ca9e594b688e9b381ec7846a44b379ccf7404098e57f8867",
-				"dweb:/ipfs/QmfWKqn68RaitdJqPEAKmEdDtyFKwTofWYWHwqTku1S9bb"
+				"bzz-raw://2ec454ac2e6eb4ffa5dc860efa40da92a6d7ca3f174641a3dd5298f8610282f9",
+				"dweb:/ipfs/QmSkgTakC3uP6EAPzhxgLsB4HtKMm9yC89k8b9C9KFExaL"
 			]
 		},
 		"utils/introspection/IERC165.sol": {

@@ -12,14 +12,14 @@ contract HouseRegistryExt is HouseRegistry {
         listHouse(_price, _priceDai, _area, msg.sender, _houseAddress);
     }
     function buyHouseWithETH(uint _houseId) external payable{
-        require(msg.value >= (houses[_houseId])._getPrice());
-        payable(msg.sender).transfer(msg.value - (houses[_houseId])._getPrice());
-        houses[_houseId].buyerAddress = msg.sender;
-        payable(houses[_houseId].sellerAddress).transfer(msg.value);
+        require(msg.value >= HouseToken(houses[_houseId])._getPrice());
+        payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId])._getPrice());
+        HouseToken(houses[_houseId])._changeBuyerAddress(msg.sender);
+        payable(HouseToken(houses[_houseId])._getSellerAddress()).transfer(msg.value);
     }
 
     function buyHouseWithDai(uint _houseId) external {
-        IERC20(0x9bF88fAe8CF8BaB76041c1db6467E7b37b977dD7).transferFrom(msg.sender, houses[_houseId].sellerAddress, houses[_houseId].priceDai);
-        houses[_houseId].buyerAddress = msg.sender;
+        IERC20(0x9bF88fAe8CF8BaB76041c1db6467E7b37b977dD7).transferFrom(msg.sender, HouseToken(houses[_houseId])._getSellerAddress(), HouseToken(houses[_houseId])._getPrice());
+        HouseToken(houses[_houseId])._changeBuyerAddress(msg.sender);
     }
 }

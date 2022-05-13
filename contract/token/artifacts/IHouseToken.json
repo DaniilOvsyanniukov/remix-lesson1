@@ -49,9 +49,11 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
+			"_changeBuyerAddress(address)": "d847c19a",
 			"_delistHouse()": "5ff27f13",
 			"_getId()": "36c8af5d",
 			"_getPrice()": "a19af1ad",
+			"_getSellerAddress()": "a8a0991a",
 			"approve(address,uint256)": "095ea7b3",
 			"balanceOf(address)": "70a08231",
 			"getApproved(uint256)": "081812fc",
@@ -141,6 +143,19 @@
 			"type": "event"
 		},
 		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "buyerAddress",
+					"type": "address"
+				}
+			],
+			"name": "_changeBuyerAddress",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
 			"inputs": [],
 			"name": "_delistHouse",
 			"outputs": [],
@@ -168,6 +183,19 @@
 					"internalType": "uint256",
 					"name": "",
 					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "_getSellerAddress",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
 				}
 			],
 			"stateMutability": "view",

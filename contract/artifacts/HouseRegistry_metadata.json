@@ -6,11 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -48,151 +43,6 @@
 				"type": "event"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "approved",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "Approval",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "bool",
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "ApprovalForAll",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "Transfer",
-				"type": "event"
-			},
-			{
-				"inputs": [],
-				"name": "_delistHouse",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "_getId",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "_getPrice",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "approve",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					}
-				],
-				"name": "balanceOf",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -206,25 +56,6 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "getApproved",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -253,25 +84,6 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "houseId",
-						"type": "uint256"
-					}
-				],
-				"name": "getTokenId",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -282,30 +94,6 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "owner",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					}
-				],
-				"name": "isApprovedForAll",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -349,226 +137,11 @@
 				],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "name",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "ownerOf",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "safeTransferFrom",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bytes",
-						"name": "data",
-						"type": "bytes"
-					}
-				],
-				"name": "safeTransferFrom",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "operator",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "approved",
-						"type": "bool"
-					}
-				],
-				"name": "setApprovalForAll",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bytes4",
-						"name": "interfaceId",
-						"type": "bytes4"
-					}
-				],
-				"name": "supportsInterface",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "symbol",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "tokenURI",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "from",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "transferFrom",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {
-				"approve(address,uint256)": {
-					"details": "See {IERC721-approve}."
-				},
-				"balanceOf(address)": {
-					"details": "See {IERC721-balanceOf}."
-				},
-				"getApproved(uint256)": {
-					"details": "See {IERC721-getApproved}."
-				},
-				"isApprovedForAll(address,address)": {
-					"details": "See {IERC721-isApprovedForAll}."
-				},
-				"name()": {
-					"details": "See {IERC721Metadata-name}."
-				},
-				"ownerOf(uint256)": {
-					"details": "See {IERC721-ownerOf}."
-				},
-				"safeTransferFrom(address,address,uint256)": {
-					"details": "See {IERC721-safeTransferFrom}."
-				},
-				"safeTransferFrom(address,address,uint256,bytes)": {
-					"details": "See {IERC721-safeTransferFrom}."
-				},
-				"setApprovalForAll(address,bool)": {
-					"details": "See {IERC721-setApprovalForAll}."
-				},
-				"supportsInterface(bytes4)": {
-					"details": "See {IERC165-supportsInterface}."
-				},
-				"symbol()": {
-					"details": "See {IERC721Metadata-symbol}."
-				},
-				"tokenURI(uint256)": {
-					"details": "See {IERC721Metadata-tokenURI}."
-				},
-				"transferFrom(address,address,uint256)": {
-					"details": "See {IERC721-transferFrom}."
-				}
-			},
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
@@ -594,11 +167,11 @@
 	},
 	"sources": {
 		"contract/HouseRegistry.sol": {
-			"keccak256": "0xb32bf61ed06a81fe4da6c79399d85c615a35a905f25c00dd8890802ee227bd41",
+			"keccak256": "0x908b5224fcac5e29bf6285c5562b064858ef21eb9deca53cb02bf0ec7a91d34f",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://dd1f73cde76ad6c92240e9101a7ddb365ba00f6cc5d1246b1ecb538c2d1ef87d",
-				"dweb:/ipfs/QmdRfBcyPGwTnRoBsHXmE3mDzNhtxyFeCSTEpfha4GwJTe"
+				"bzz-raw://c29bbe1c1243ea92e0abe37ad19ae2fc6f498d887b7a3a3a7a58ed093be4d1f7",
+				"dweb:/ipfs/QmXftfMzZbKTJ1GUkQHbK12wH6uKYPsEmcAcFp2oTmxJ6w"
 			]
 		},
 		"contract/token/ERC721.sol": {
@@ -610,11 +183,11 @@
 			]
 		},
 		"contract/token/HouseToken.sol": {
-			"keccak256": "0x824df99bbda0a299fbd856efdd1e54b3fbf16078bd75bc2fbf279dfa6d022026",
+			"keccak256": "0x228a405d22a07d02ffc2ac7c9ea866940dfa53e87e41ad5fb3cf2609c786a5ed",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e4c011f604954218bdab3821dbbdc7f15ff247740cf2c78c87d1c033330e7576",
-				"dweb:/ipfs/QmURP7JWpjPYiVZ8q3dZAHe2RyRYF5p3838ynAJWrAPF2V"
+				"bzz-raw://070c9fd7b649b15aa46139d6b03b645650a37120c95420c0649d973e8e50dd97",
+				"dweb:/ipfs/QmV3N2o3kcwYdvUwCz2qhXcpAf5pG2J1vsnhuzN13ot2VK"
 			]
 		},
 		"contract/token/IERC721.sol": {
@@ -634,11 +207,11 @@
 			]
 		},
 		"contract/token/IHouseToken.sol": {
-			"keccak256": "0xd5284a137bad949493c27f2fe9458d9b839d94d1f592484c10da10262ba2ab9b",
+			"keccak256": "0x29d1f27da48fd39117374b62546dbb359ff5d3b18fa32d78330750a9d125e627",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://77574e0621d3e591ca9e594b688e9b381ec7846a44b379ccf7404098e57f8867",
-				"dweb:/ipfs/QmfWKqn68RaitdJqPEAKmEdDtyFKwTofWYWHwqTku1S9bb"
+				"bzz-raw://2ec454ac2e6eb4ffa5dc860efa40da92a6d7ca3f174641a3dd5298f8610282f9",
+				"dweb:/ipfs/QmSkgTakC3uP6EAPzhxgLsB4HtKMm9yC89k8b9C9KFExaL"
 			]
 		},
 		"contract/token/extensions/IERC721Metadata.sol": {

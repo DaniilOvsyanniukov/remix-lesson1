@@ -2,30 +2,16 @@
 
 pragma solidity ^0.8.0;
 
-import "./token/HouseToken.sol";
 import "./token/IHouseToken.sol";
+import "./token/HouseToken.sol";
 
-
-contract HouseRegistry is HouseToken { 
+contract HouseRegistry { 
 
     uint digits = 5;
     uint modulus = 10 ** digits;
     uint cooldownTime = 1 days;
     uint countOfHouses = 1;
     uint private ownerAddCooldown;
-
-    uint id;
-    uint serialNumber;
-    uint price;
-    uint priceDai;
-    uint area;
-    address sellerAddress;
-    address buyerAddress;
-    string houseAddress;
-    bool isdelistedHouse;
-
-    constructor () HouseToken (id, serialNumber, price, priceDai, area, sellerAddress, buyerAddress, houseAddress, isdelistedHouse){
-    }
 
     modifier canOwnerAdd() {
         require(ownerAddCooldown <= block.timestamp, "The owner cannot yet add a new home");
@@ -44,19 +30,24 @@ contract HouseRegistry is HouseToken {
     function listHouse (uint _price, uint _priceDai, uint _area, address _sellerAddress, string memory _houseAddress) public returns (uint) {
         require(_price * _area > 0, "value cannot be null");
         uint houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
-        // require(getTokenId(houseId) > 0, "this houseId already exists");
+        require(finHouseId(houseId), "this houseId already exists");
         HouseToken house = new HouseToken(houseId, countOfHouses, _price, _priceDai, _area, _sellerAddress, _sellerAddress, _houseAddress, false);
         houses[houseId] = address(house);
-         _ownerCooldown(block.timestamp + cooldownTime);
+        _ownerCooldown(block.timestamp + cooldownTime);
         houseIndex.push(houseId);
         countOfHouses++;
         emit AddNewHouse(houseId, _sellerAddress, _price, _priceDai, _houseAddress);
         return houseId;
-
     }
 
-    function getTokenId (uint houseId) public view returns (uint){
-        return HouseToken(houses[houseId])._getId();
+    function finHouseId (uint houseId) private view returns (bool){
+        bool result = true;
+        for(uint i=0; i< houseIndex.length; i++){
+            if(houseIndex[i] == houseId) {
+                result = false;
+            }
+        }
+        return result;
     }
 
     function delistHouse(uint houseId) public view returns (string memory){
