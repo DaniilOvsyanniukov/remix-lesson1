@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contract/Ierc20.sol": "FakeDaiToken"
+			"contract/Ierc20.sol": "fakeDaiToken"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -33,11 +33,11 @@
 	},
 	"sources": {
 		"contract/Ierc20.sol": {
-			"keccak256": "0x02d9940b756bd96ce135c40abc0c9d93c64ad1aa13e43a42274a6976d1491f18",
+			"keccak256": "0x1516931fe128cf6f0f413d171e33b560879cc2cacd966a5ef46ef85c02c33b10",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://88d64a81d2cfda148d97d547a6115f9f5401e9ec69234cb09ad928c1a4c1f594",
-				"dweb:/ipfs/QmcoWJiEtn1RdeVf7McGqKUccpZAwKRFNe5bszA2sEmZj6"
+				"bzz-raw://377b305c6667061ccf367df052e7926dbb96c061934331bd150893e06dddf10a",
+				"dweb:/ipfs/QmPFZHZR1DNgP7pAgCreuuoX8EjStdqgadh4wNLzYBcHht"
 			]
 		}
 	},
