@@ -3,48 +3,50 @@
 
 pragma solidity ^0.8.0;
 
-import "./ERC721.sol";
-import "./IHouseToken.sol";
+import './ERC721.sol';
+import './IHouseToken.sol';
 
 contract HouseToken is ERC721, IHouseToken {
 
-    uint _id;
-    uint _serialNumber;
-    uint _price;
-    uint _priceDai;
-    uint _area;
-    address _sellerAddress;
-    address _buyerAddress;
-    string _houseAddress;
-    bool _isdelistedHouse;
+    uint public id;
+    uint public serialNumber;
+    uint public price;
+    uint public priceDai;
+    uint public area;
+    address public sellerAddress;
+    address public buyerAddress;
+    string public houseAddress;
+    bool public isdelistedHouse;
 
-    constructor(uint id_, uint serialNumber_, uint price_, uint priceDai_, uint area_, address sellerAddress_, address buyerAddress_, string  memory houseAddress_, bool isdelistedHouse_) ERC721("HouseToken", "HT") {
-       _id=id_;
-       _serialNumber=serialNumber_;
-       _price=price_;
-       _priceDai=priceDai_;
-       _area=area_;
-       _sellerAddress=sellerAddress_;
-       _buyerAddress=buyerAddress_;
-       _houseAddress=houseAddress_;
-       _isdelistedHouse=isdelistedHouse_;
+    constructor(uint id_, uint serialNumber_, uint price_, uint priceDai_, 
+        uint area_, address sellerAddress_, address buyerAddress_, string 
+        memory houseAddress_, bool isdelistedHouse_) ERC721('HouseToken', 'HT') {
+       id=id_;
+       serialNumber=serialNumber_;
+       price=price_;
+       priceDai=priceDai_;
+       area=area_;
+       sellerAddress=sellerAddress_;
+       buyerAddress=buyerAddress_;
+       houseAddress=houseAddress_;
+       isdelistedHouse=isdelistedHouse_;
     }
 
     function changeBuyerAddress (address buyerAddress) external override {
-        _buyerAddress = buyerAddress;
+        buyerAddress = buyerAddress;
     }
 
     function delistHouse () external override {
-       _isdelistedHouse = true;
+       isdelistedHouse = true;
     }
     function getPrice() external view override returns(uint){
-        return _price;
+        return price;
     }
     function getId() external view override returns(uint){
-        return _id;
+        return id;
     }  
     function getSellerAddress() external view  override returns(address){
-        return _sellerAddress;
+        return sellerAddress;
     }
 
     

@@ -5,14 +5,14 @@ pragma solidity ^0.8.0;
 import './token/HouseToken.sol';
 
 contract HouseRegistry {
-    uint256 digits = 5;
-    uint256 modulus = 10**digits;
-    uint256 cooldownTime = 1 days;
-    uint256 countOfHouses = 1;
+    uint256 private digits = 5;
+    uint256 private modulus = 10**digits;
+    uint256 private cooldownTime = 1 days;
+    uint256 private countOfHouses = 1;
     uint256 private ownerAddCooldown;
 
     modifier canOwnerAdd() {
-        require(ownerAddCooldown <= block.timestamp, 'The owner cannot yet add a new home');
+        require(ownerAddCooldown <= block.timestamp, 'The owner cannot add a new home');
         _;
     }
 
@@ -71,7 +71,7 @@ contract HouseRegistry {
     }
 
     function delistHouse(uint256 houseId) public view returns (string memory) {
-        require(houses[houseId] == msg.sender, 'You do not have access to delete this house');
+        require(houses[houseId] == msg.sender, 'You do not have access');
         HouseToken(houses[houseId]).delistHouse();
         return 'delist was successful';
     }

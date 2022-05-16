@@ -7,7 +7,7 @@ import './token/IERC20.sol';
 import './token/IHouseToken.sol';
 
 contract HouseRegistryExt is HouseRegistry {
-    address daiAddress = 0x9bF88fAe8CF8BaB76041c1db6467E7b37b977dD7;
+    address private daiAddress = 0x9bF88fAe8CF8BaB76041c1db6467E7b37b977dD7;
 
     function listHouseSimple(
         uint256 _price,
@@ -19,7 +19,7 @@ contract HouseRegistryExt is HouseRegistry {
     }
 
     function buyHouseWithETH(uint256 _houseId) external payable {
-        require(msg.value >= HouseToken(houses[_houseId]).getPrice());
+        require(msg.value >= HouseToken(houses[_houseId]).getPrice(), 'insufficient funds');
         payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).getPrice());
         HouseToken(houses[_houseId])._changeBuyerAddress(msg.sender);
         payable(HouseToken(houses[_houseId]).getSellerAddress()).transfer(msg.value);
