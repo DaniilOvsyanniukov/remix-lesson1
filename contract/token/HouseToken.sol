@@ -30,20 +30,20 @@ contract HouseToken is ERC721, IHouseToken {
        _isdelistedHouse=isdelistedHouse_;
     }
 
-    function _changeBuyerAddress (address buyerAddress) external override {
+    function changeBuyerAddress (address buyerAddress) external override {
         _buyerAddress = buyerAddress;
     }
 
-    function _delistHouse () external override {
+    function delistHouse () external override {
        _isdelistedHouse = true;
     }
-    function _getPrice() external view override returns(uint){
+    function getPrice() external view override returns(uint){
         return _price;
     }
-    function _getId() external view override returns(uint){
+    function getId() external view override returns(uint){
         return _id;
     }  
-    function _getSellerAddress() external view  override returns(address){
+    function getSellerAddress() external view  override returns(address){
         return _sellerAddress;
     }
 

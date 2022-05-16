@@ -3,17 +3,16 @@
 
 pragma solidity ^0.8.0;
 
-import "./IERC721.sol";
+import './IERC721.sol';
 
 interface IHouseToken is IERC721 {
-    function _changeBuyerAddress (address buyerAddress) external;
+    function changeBuyerAddress(address buyerAddress) external;
 
-    function _delistHouse () external;
+    function delistHouse() external;
 
-    function _getPrice() external view returns(uint);
-    
-    function _getId() external view returns(uint);
+    function getPrice() external view returns (uint256);
 
-    function _getSellerAddress() external view returns(address);
+    function getId() external view returns (uint256);
 
+    function getSellerAddress() external view returns (address);
 }
