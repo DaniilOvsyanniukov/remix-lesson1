@@ -9,10 +9,4 @@ interface IHouseToken is IERC721 {
     function changeBuyerAddress(address buyerAddress) external;
 
     function delistHouse() external;
-
-    function getPrice() external view returns (uint256);
-
-    function getId() external view returns (uint256);
-
-    function getSellerAddress() external view returns (address);
 }
