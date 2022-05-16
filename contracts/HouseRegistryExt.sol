@@ -19,17 +19,17 @@ contract HouseRegistryExt is HouseRegistry {
     }
 
     function buyHouseWithETH(uint256 _houseId) external payable {
-        require(msg.value >= HouseToken(houses[_houseId]).getPrice(), 'insufficient funds');
-        payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).getPrice());
+        require(msg.value >= HouseToken(houses[_houseId]).price(), 'insufficient funds');
+        payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).price());
         HouseToken(houses[_houseId])._changeBuyerAddress(msg.sender);
-        payable(HouseToken(houses[_houseId]).getSellerAddress()).transfer(msg.value);
+        payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(msg.value);
     }
 
     function buyHouseWithDai(uint256 _houseId) external {
         IERC20(daiAddress).transferFrom(
             msg.sender,
-            HouseToken(houses[_houseId]).getSellerAddress(),
-            HouseToken(houses[_houseId]).getPrice()
+            HouseToken(houses[_houseId]).sellerAddress(),
+            HouseToken(houses[_houseId]).price()
         );
         HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
     }

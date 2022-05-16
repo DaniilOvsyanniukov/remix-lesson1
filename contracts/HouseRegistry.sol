@@ -79,14 +79,14 @@ contract HouseRegistry {
     function getCheapHouseIds(uint256 cost) external view returns (uint256[] memory) {
         uint256 count = 0;
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).getPrice() < cost) {
+            if (HouseToken(houses[houseIndex[i]]).price() < cost) {
                 count++;
             }
         }
         uint256[] memory filteredHouses = new uint256[](count);
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).getPrice() < cost) {
-                filteredHouses[i] = HouseToken(houses[houseIndex[i]]).getId();
+            if (HouseToken(houses[houseIndex[i]]).price() < cost) {
+                filteredHouses[i] = HouseToken(houses[houseIndex[i]]).id();
             }
         }
         return filteredHouses;
