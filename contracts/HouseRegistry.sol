@@ -70,7 +70,7 @@ contract HouseRegistry {
         return result;
     }
 
-    function delistHouse(uint256 houseId) public view returns (string memory) {
+    function delistHouse(uint256 houseId) public returns (string memory) {
         require(houses[houseId] == msg.sender, 'You do not have access');
         HouseToken(houses[houseId]).delistHouse();
         return 'delist was successful';
