@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
 import './HouseRegistry.sol';
-import './token/IERC20.sol';
+import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import './token/IHouseToken.sol';
 
 contract HouseRegistryExt is HouseRegistry {

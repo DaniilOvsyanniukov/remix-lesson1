@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
-import './IERC721.sol';
+import '@openzeppelin/contracts/token/ERC721/IERC721.sol';
 
 interface IHouseToken is IERC721 {
     function changeBuyerAddress(address buyerAddress) external;

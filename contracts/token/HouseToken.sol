@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 // OpenZeppelin Contracts (last updated v4.6.0) (token/ERC721/IERC721.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
-import './ERC721.sol';
+import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import './IHouseToken.sol';
 
 contract HouseToken is ERC721, IHouseToken {

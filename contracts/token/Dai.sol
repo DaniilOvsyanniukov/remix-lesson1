@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
-import './ERC20.sol';
+// import './ERC20.sol';
+import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 
 contract DaiToken is ERC20 {
     constructor() ERC20('Dai', 'D') {

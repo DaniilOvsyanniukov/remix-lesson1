@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
 import './token/HouseToken.sol';
 
@@ -9,10 +9,9 @@ contract HouseRegistry {
     uint256 private modulus = 10**digits;
     uint256 private cooldownTime = 1 days;
     uint256 private countOfHouses = 1;
-    uint256 private ownerAddCooldown;
 
     modifier canOwnerAdd() {
-        require(ownerAddCooldown <= block.timestamp, 'The owner cannot add a new home');
+        require(cooldown[msg.sender] <= block.timestamp, 'The owner cannot add a new home');
         _;
     }
 
@@ -24,11 +23,19 @@ contract HouseRegistry {
         string houseAddress
     );
 
+    event IsDelistedHouse(
+        string message
+    );
+
     uint256[] private houseIndex;
     mapping(uint256 => address) public houses;
 
-    function _ownerCooldown(uint256 _newTime) internal {
-        ownerAddCooldown = _newTime;
+    mapping(address=> uint256) public cooldown;
+
+ 
+
+    function _ownerCooldown(uint256 _newTime, address _address) internal {
+        cooldown[_address] = _newTime;
     }
 
     function listHouse(
@@ -37,7 +44,7 @@ contract HouseRegistry {
         uint256 _area,
         address _sellerAddress,
         string memory _houseAddress
-    ) public returns (uint256) {
+    ) public canOwnerAdd returns (uint256) {
         require(_price * _area > 0, 'value cannot be null');
         uint256 houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
         require(finHouseId(houseId), 'this houseId already exists');
@@ -53,7 +60,7 @@ contract HouseRegistry {
             false
         );
         houses[houseId] = address(house);
-        _ownerCooldown(block.timestamp + cooldownTime);
+        _ownerCooldown(block.timestamp + cooldownTime, msg.sender);
         houseIndex.push(houseId);
         countOfHouses++;
         emit AddNewHouse(houseId, _sellerAddress, _price, _priceDai, _houseAddress);
@@ -71,9 +78,11 @@ contract HouseRegistry {
     }
 
     function delistHouse(uint256 houseId) public returns (string memory) {
-        require(houses[houseId] == msg.sender, 'You do not have access');
+        require(HouseToken(houses[houseId]).sellerAddress() == msg.sender, 'You do not have access');
         HouseToken(houses[houseId]).delistHouse();
-        return 'delist was successful';
+        string memory message = 'delisted was successful';
+        emit IsDelistedHouse(message);
+        return message;
     }
 
     function getCheapHouseIds(uint256 cost) external view returns (uint256[] memory) {
@@ -96,10 +105,11 @@ contract HouseRegistry {
         address _sellerAddress,
         uint256 _area,
         string memory _houseAddress
-    ) private view returns (uint256) {
+    ) internal view returns (uint256) {
         uint256 houseId = uint256(
             keccak256(abi.encodePacked(_sellerAddress, _area, _houseAddress))
         );
         return houseId % modulus;
     }
+
 }
