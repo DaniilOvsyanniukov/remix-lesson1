@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.1;
 
 import './HouseRegistry.sol';
-import './token/IERC20.sol';
+import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import './token/IHouseToken.sol';
 
 contract HouseRegistryExt is HouseRegistry {
@@ -21,7 +21,7 @@ contract HouseRegistryExt is HouseRegistry {
     function buyHouseWithETH(uint256 _houseId) external payable {
         require(msg.value >= HouseToken(houses[_houseId]).price(), 'insufficient funds');
         payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).price());
-        HouseToken(houses[_houseId])._changeBuyerAddress(msg.sender);
+        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
         payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(msg.value);
     }
 
