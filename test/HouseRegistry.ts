@@ -49,6 +49,13 @@ describe('HouseRegistry', function () {
     await expect(func[0]).to.equal(houseId);
   });
 
+  // it('testfunc', async function () {
+  //   const func = await houseRegistry.connect(acc2).testfunction(houseId)
+  //       // const result = await func.wait()
+  //       console.log(func)
+
+  //   });
+
   it('should return succes of delisted', async function () {
     const func = await houseRegistry.delistHouse(houseId)
     const result = await func.wait()
@@ -60,7 +67,7 @@ describe('HouseRegistry', function () {
     let result:any;
 
     try {
-      await await houseRegistry.connect(acc2).delistHouse(houseId)
+      await houseRegistry.connect(acc2).delistHouse(houseId)
     } catch(e){
     result = (e as Error).message;
 }
@@ -104,4 +111,25 @@ describe('HouseRegistry', function () {
     expect(result).to.equal(message)
 
   });
+
+  it('should return error value cannot be null', async function () {
+    const message = "VM Exception while processing transaction: reverted with reason string 'value cannot be null'";
+    let result:any;
+
+    try {
+       await houseRegistry.connect(acc3).listHouse(
+      0,
+      0,
+      0,
+      acc1.address,
+      "asd"
+    );
+    } catch(e){
+    result = (e as Error).message;
+    }
+    expect(result).to.equal(message)
+
+  });
+
+
 });

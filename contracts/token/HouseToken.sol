@@ -46,4 +46,5 @@ contract HouseToken is ERC721, IHouseToken {
     function delistHouse() external override {
         isdelistedHouse = true;
     }
+
 }

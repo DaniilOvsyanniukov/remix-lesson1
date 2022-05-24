@@ -111,5 +111,6 @@ contract HouseRegistry {
         );
         return houseId % modulus;
     }
+    
 
 }
