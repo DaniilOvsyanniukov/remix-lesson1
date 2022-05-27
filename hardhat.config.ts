@@ -1,19 +1,19 @@
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 
-import { HardhatUserConfig, task } from "hardhat/config";
+import { HardhatUserConfig, task } from 'hardhat/config';
 // import "@nomiclabs/hardhat-ganache";
-import "@nomiclabs/hardhat-etherscan";
-import "@nomiclabs/hardhat-waffle";
-import "@typechain/hardhat";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
+import '@nomiclabs/hardhat-etherscan';
+import '@nomiclabs/hardhat-waffle';
+import '@typechain/hardhat';
+import 'hardhat-gas-reporter';
+import 'solidity-coverage';
+import 'hardhat-contract-sizer';
 
 dotenv.config();
 
 interface Etherscan {
   etherscan: { apiKey: string | undefined };
 }
-
 
 type HardhatUserEtherscanConfig = HardhatUserConfig & Etherscan;
 
@@ -37,9 +37,9 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserEtherscanConfig = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: 'hardhat',
   solidity: {
-    compilers: [{ version: "0.8.1", settings: {} }],
+    compilers: [{ version: '0.8.1', settings: {} }],
   },
   networks: {
     hardhat: {},
@@ -49,13 +49,13 @@ const config: HardhatUserEtherscanConfig = {
       accounts: [RINKEBY_PRIVATE_KEY],
     },
     coverage: {
-      url: "http://127.0.0.1:8555", // Coverage launches its own ganache-cli client
+      url: 'http://127.0.0.1:8555', // Coverage launches its own ganache-cli client
     },
   },
-  
+
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
-    currency: "USD",
+    currency: 'USD',
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
