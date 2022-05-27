@@ -23,16 +23,12 @@ contract HouseRegistry {
         string houseAddress
     );
 
-    event IsDelistedHouse(
-        string message
-    );
+    event IsDelistedHouse(string message);
 
     uint256[] private houseIndex;
     mapping(uint256 => address) public houses;
 
-    mapping(address=> uint256) public cooldown;
-
- 
+    mapping(address => uint256) public cooldown;
 
     function _ownerCooldown(uint256 _newTime, address _address) internal {
         cooldown[_address] = _newTime;
@@ -78,7 +74,10 @@ contract HouseRegistry {
     }
 
     function delistHouse(uint256 houseId) public returns (string memory) {
-        require(HouseToken(houses[houseId]).sellerAddress() == msg.sender, 'You do not have access');
+        require(
+            HouseToken(houses[houseId]).sellerAddress() == msg.sender,
+            'You do not have access'
+        );
         HouseToken(houses[houseId]).delistHouse();
         string memory message = 'delisted was successful';
         emit IsDelistedHouse(message);
@@ -111,6 +110,4 @@ contract HouseRegistry {
         );
         return houseId % modulus;
     }
-    
-
 }

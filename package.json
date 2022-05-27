@@ -8,11 +8,11 @@
     "lint": "npm run lint:ts && npm run lint:sol",
     "lint:ts": "npx eslint test/** --fix",
     "lint:sol": "npx solhint contracts/**/*.sol",
-    "prettier": "npx prettier:ts && npx prettier:sol",
-    "prettier:ts": "npx prettier --write '**/*.ts'",
-    "prettier:sol": "npx prettier --write 'contracts/**/*.sol'",
+    "prettier": "npm run prettier:ts && npm run prettier:sol",
+    "prettier:ts": "npx prettier --write \"**/*.ts\"",
+    "prettier:sol": "npx prettier --write \"contracts/**/*.sol\"",
     "typechain": "npx hardhat typechain",
-    "size": "npm hardhat size-contracts",
+    "size": "npx hardhat size-contracts",
     "build": "npm run clean && npm run compile",
     "clean": "npx hardhat clean",
     "compile": "npx hardhat compile",
@@ -48,7 +48,7 @@
     "ethers": "^5.6.6",
     "hardhat": "^2.9.5",
     "hardhat-gas-reporter": "^1.0.8",
-    "prettier": "^2.6.2",
+    "prettier": "2.6.2",
     "prettier-plugin-solidity": "^1.0.0-beta.19",
     "solhint": "^3.3.7",
     "solhint-plugin-prettier": "^0.0.5",
@@ -59,6 +59,9 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.6.0"
+    "@actions/core": "^1.8.2",
+    "@actions/github": "^5.0.3",
+    "@openzeppelin/contracts": "^4.6.0",
+    "hardhat-contract-sizer": "^2.5.1"
   }
 }
