@@ -9,7 +9,7 @@ import './token/IHouseToken.sol';
 contract HouseRegistryExt is HouseRegistry {
     address public daiAddress;
 
-    event IsTrunsactionSucces(string message, address buyerAddress);
+    event IsTransactionSucces(string message, address buyerAddress);
 
     constructor(address _daiAddress) public {
         daiAddress = _daiAddress;
@@ -33,7 +33,7 @@ contract HouseRegistryExt is HouseRegistry {
         payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(
             HouseToken(houses[_houseId]).price()
         );
-        emit IsTrunsactionSucces(
+        emit IsTransactionSucces(
             'Transactions succesful',
             HouseToken(houses[_houseId]).buyerAddress()
         );
@@ -46,7 +46,7 @@ contract HouseRegistryExt is HouseRegistry {
             HouseToken(houses[_houseId]).price()
         );
         HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-        emit IsTrunsactionSucces(
+        emit IsTransactionSucces(
             'Transactions succesful',
             HouseToken(houses[_houseId]).buyerAddress()
         );
