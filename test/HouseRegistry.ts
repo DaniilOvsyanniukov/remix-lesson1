@@ -45,52 +45,24 @@ describe('HouseRegistry', function () {
   it('should return error You do not have access', async function () {
     const message =
       "VM Exception while processing transaction: reverted with reason string 'You do not have access'";
-    let result: any;
-
-    try {
-      await houseRegistry.connect(acc2).delistHouse(houseId);
-    } catch (e) {
-      result = (e as Error).message;
-    }
-    expect(result).to.equal(message);
+    expect(houseRegistry.connect(acc2).delistHouse(houseId)).to.be.revertedWith(message);
   });
 
   it('should return error his houseId already exists', async function () {
     const message =
       "VM Exception while processing transaction: reverted with reason string 'this houseId already exists'";
-    let result: any;
-
-    try {
-      await houseRegistry.connect(acc3).listHouse(103, 103, 103, acc1.address, 'asd');
-    } catch (e) {
-      result = (e as Error).message;
-    }
-    expect(result).to.equal(message);
+    expect(houseRegistry.connect(acc3).listHouse(103, 103, 103, acc1.address, 'asd')).to.be.revertedWith(message);
   });
 
   it('should return error The owner cannot add a new home', async function () {
     const message =
       "VM Exception while processing transaction: reverted with reason string 'The owner cannot add a new home'";
-    let result: any;
-
-    try {
-      await houseRegistry.listHouse(103, 103, 103, acc1.address, 'asd');
-    } catch (e) {
-      result = (e as Error).message;
-    }
-    expect(result).to.equal(message);
+    expect(houseRegistry.listHouse(103, 103, 103, acc1.address, 'asd')).to.be.revertedWith(message);
   });
 
   it('should return error value cannot be null', async function () {
     const message =
       "VM Exception while processing transaction: reverted with reason string 'value cannot be null'";
-    let result: any;
-
-    try {
-      await houseRegistry.connect(acc3).listHouse(0, 0, 0, acc1.address, 'asd');
-    } catch (e) {
-      result = (e as Error).message;
-    }
-    expect(result).to.equal(message);
+    expect(houseRegistry.connect(acc3).listHouse(0, 0, 0, acc1.address, 'asd')).to.be.revertedWith(message);
   });
 });
