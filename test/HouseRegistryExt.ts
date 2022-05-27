@@ -58,13 +58,13 @@ describe('HouseRegistryExt', function () {
   });
 
   it('should return Transactions succesful', async function () {
-      await daiToken.connect(acc3).approve(houseRegistryExt.address, 200);
-      const func = await houseRegistryExt.connect(acc3).buyHouseWithDai(houseId);
-      const result = await func.wait();
-      await expect(result.events[2].args[0]).to.equal('Transactions succesful');
-      await expect(result.events[2].args[1]).to.equal(acc3.address);
-      await expect(await daiToken.connect(acc3).balanceOf(acc3.address)).to.equal(99999897);
-      await expect(await daiToken.connect(acc3).balanceOf(acc2.address)).to.equal(103);
+    await daiToken.connect(acc3).approve(houseRegistryExt.address, 200);
+    const func = await houseRegistryExt.connect(acc3).buyHouseWithDai(houseId);
+    const result = await func.wait();
+    await expect(result.events[2].args[0]).to.equal('Transactions succesful');
+    await expect(result.events[2].args[1]).to.equal(acc3.address);
+    await expect(await daiToken.connect(acc3).balanceOf(acc3.address)).to.equal(99999897);
+    await expect(await daiToken.connect(acc3).balanceOf(acc2.address)).to.equal(103);
   });
 
   it('should return succesful', async function () {

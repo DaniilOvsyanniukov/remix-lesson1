@@ -33,7 +33,10 @@ contract HouseRegistryExt is HouseRegistry {
         payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(
             HouseToken(houses[_houseId]).price()
         );
-        emit IsTrunsactionSucces('Transactions succesful', HouseToken(houses[_houseId]).buyerAddress());
+        emit IsTrunsactionSucces(
+            'Transactions succesful',
+            HouseToken(houses[_houseId]).buyerAddress()
+        );
     }
 
     function buyHouseWithDai(uint256 _houseId) external {
@@ -43,7 +46,9 @@ contract HouseRegistryExt is HouseRegistry {
             HouseToken(houses[_houseId]).price()
         );
         HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-        emit IsTrunsactionSucces('Transactions succesful', HouseToken(houses[_houseId]).buyerAddress());
+        emit IsTrunsactionSucces(
+            'Transactions succesful',
+            HouseToken(houses[_houseId]).buyerAddress()
+        );
     }
-
 }
