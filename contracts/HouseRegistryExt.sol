@@ -7,12 +7,15 @@ import '@openzeppelin/contracts/token/ERC20/IERC20.sol';
 import './token/IHouseToken.sol';
 
 contract HouseRegistryExt is HouseRegistry {
-    address private daiAddress = 0x9bF88fAe8CF8BaB76041c1db6467E7b37b977dD7;
-    bool approved;
+    address public daiAddress;
 
     event IsTrunsactionSucces (string message);  
     event IsTrunsactionApproved (string message);  
     event testevent (uint message);
+
+    constructor (address _daiAddress) public {
+        daiAddress = _daiAddress;
+    }
 
     function listHouseSimple(
         uint256 _price,
@@ -32,26 +35,13 @@ contract HouseRegistryExt is HouseRegistry {
         emit IsTrunsactionSucces('Transactions succesful');
     }
 
-    function approveTransaction(address spender, uint value, address _daiAddress) external {
-        daiAddress = _daiAddress;
-        IERC20(daiAddress).approve(
-            spender,
-            value
-        );
-        
-        approved = true;
-        emit IsTrunsactionApproved('transaction approved');
-    }
-
     function buyHouseWithDai(uint256 _houseId) external {
-        require(approved, 'transaction dont approve');
         IERC20(daiAddress).transferFrom(
             msg.sender,
             HouseToken(houses[_houseId]).sellerAddress(),
             HouseToken(houses[_houseId]).price()
         );
-        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-        emit IsTrunsactionSucces('Transactions succesful');
+        // TODO: transfer ownership of the ERC721 House
     }
 
     // function testfunctionext(address owner, address spender, address _daiAddress) external {
