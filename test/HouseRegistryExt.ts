@@ -45,8 +45,7 @@ describe('HouseRegistryExt', function () {
   });
 
   it('should return insufficient funds', async function () {
-    const message =
-      "VM Exception while processing transaction: reverted with reason string 'value less than cost'";
+    const message = 'value less than cost';
     expect(houseRegistryExt.buyHouseWithETH(houseId, { value: 100 })).to.be.revertedWith(message);
   });
 
