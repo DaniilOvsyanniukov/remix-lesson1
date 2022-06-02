@@ -39,7 +39,7 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 const config: HardhatUserEtherscanConfig = {
   defaultNetwork: 'hardhat',
   solidity: {
-    compilers: [{ version: '0.8.1', settings: {} }],
+    compilers: [{ version: '0.8.2', settings: {} }],
   },
   networks: {
     hardhat: {},

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { expect } from 'chai';
-import { ethers } from 'hardhat';
+import { ethers, upgrades } from 'hardhat';
 
 describe('HouseRegistry', function () {
   let acc1: any;
@@ -12,7 +12,7 @@ describe('HouseRegistry', function () {
   beforeEach(async function () {
     [acc1, acc2, acc3] = await ethers.getSigners();
     const HouseRegistry = await ethers.getContractFactory('HouseRegistry');
-    houseRegistry = await HouseRegistry.deploy();
+    houseRegistry = await upgrades.deployProxy(HouseRegistry, { initializer: 'initialize' });
     await houseRegistry.deployed();
     const func = await houseRegistry.listHouse(103, 103, 103, acc1.address, 'asd');
     const result = await func.wait();

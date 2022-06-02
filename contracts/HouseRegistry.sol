@@ -1,14 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.1;
+pragma solidity ^0.8.2;
 
 import './token/HouseToken.sol';
+import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
-contract HouseRegistry {
-    uint256 private digits = 5;
-    uint256 private modulus = 10**digits;
-    uint256 private cooldownTime = 1 days;
-    uint256 private countOfHouses = 1;
+contract HouseRegistry is Initializable {
+    function initialize() public initializer {
+        cooldownTime = 1 days;
+    }
+
+    uint256 public cooldownTime;
+    uint256 public countOfHouses;
 
     modifier canOwnerAdd() {
         require(cooldown[msg.sender] <= block.timestamp, 'The owner cannot add a new home');
@@ -25,7 +28,7 @@ contract HouseRegistry {
 
     event IsDelistedHouse(string message);
 
-    uint256[] private houseIndex;
+    uint256[] public houseIndex;
     mapping(uint256 => address) public houses;
 
     mapping(address => uint256) public cooldown;
@@ -87,13 +90,13 @@ contract HouseRegistry {
     function getCheapHouseIds(uint256 cost) external view returns (uint256[] memory) {
         uint256 count = 0;
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).price() < cost) {
+            if (HouseToken(houses[houseIndex[i]]).price() <= cost) {
                 count++;
             }
         }
         uint256[] memory filteredHouses = new uint256[](count);
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).price() < cost) {
+            if (HouseToken(houses[houseIndex[i]]).price() <= cost) {
                 filteredHouses[i] = HouseToken(houses[houseIndex[i]]).id();
             }
         }
@@ -104,7 +107,9 @@ contract HouseRegistry {
         address _sellerAddress,
         uint256 _area,
         string memory _houseAddress
-    ) internal view returns (uint256) {
+    ) internal pure returns (uint256) {
+        uint256 digits = 5;
+        uint256 modulus = 10**digits;
         uint256 houseId = uint256(
             keccak256(abi.encodePacked(_sellerAddress, _area, _houseAddress))
         );
