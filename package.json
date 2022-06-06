@@ -24,6 +24,7 @@
     "@nomiclabs/hardhat-etherscan": "^3.0.3",
     "@nomiclabs/hardhat-ganache": "^2.0.1",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/hardhat-upgrades": "^1.17.0",
     "@typechain/ethers-v5": "^7.2.0",
     "@typechain/hardhat": "^2.3.1",
     "@types/chai": "^4.3.1",
@@ -45,7 +46,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.2.0",
     "ethereum-waffle": "^3.4.4",
-    "ethers": "^5.6.6",
+    "ethers": "^5.6.8",
     "hardhat": "^2.9.5",
     "hardhat-gas-reporter": "^1.0.8",
     "prettier": "2.6.2",
@@ -62,6 +63,7 @@
     "@actions/core": "^1.8.2",
     "@actions/github": "^5.0.3",
     "@openzeppelin/contracts": "^4.6.0",
+    "@openzeppelin/contracts-upgradeable": "^4.6.0",
     "hardhat-contract-sizer": "^2.5.1"
   }
 }

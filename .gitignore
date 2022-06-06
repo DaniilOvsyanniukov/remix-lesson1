@@ -15,3 +15,6 @@ artifacts
 # Code editors
 *.code-workspace
 !Linters.code-workspace
+
+# OpenZeppelin
+.openzeppelin/unknown-*.json

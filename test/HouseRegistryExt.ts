@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { expect } from 'chai';
-import { ethers } from 'hardhat';
+import { ethers, upgrades } from 'hardhat';
 
 describe('HouseRegistryExt', function () {
   let acc1: any;
@@ -13,11 +13,13 @@ describe('HouseRegistryExt', function () {
 
   beforeEach(async function () {
     [acc1, acc2, acc3] = await ethers.getSigners();
-    const HouseRegistryExt = await ethers.getContractFactory('HouseRegistryExt', acc1);
+    const HouseRegistryExt = await ethers.getContractFactory('HouseRegistryExt');
     const DaiToken = await ethers.getContractFactory('DaiToken', acc3);
     daiToken = await DaiToken.deploy();
     daiAddress = daiToken.address;
-    houseRegistryExt = await HouseRegistryExt.deploy(daiAddress);
+    houseRegistryExt = await upgrades.deployProxy(HouseRegistryExt, [daiAddress], {
+      initializer: 'init',
+    });
     await houseRegistryExt.deployed();
     await daiToken.deployed();
     const func = await houseRegistryExt.connect(acc2).listHouseSimple(103, 103, 103, 'asd');
@@ -45,16 +47,8 @@ describe('HouseRegistryExt', function () {
   });
 
   it('should return insufficient funds', async function () {
-    const message =
-      "VM Exception while processing transaction: reverted with reason string 'value less than cost'";
-    let result: any;
-
-    try {
-      await houseRegistryExt.buyHouseWithETH(houseId, { value: 100 });
-    } catch (e) {
-      result = (e as Error).message;
-    }
-    expect(result).to.equal(message);
+    const message = 'value less than cost';
+    expect(houseRegistryExt.buyHouseWithETH(houseId, { value: 100 })).to.be.revertedWith(message);
   });
 
   it('should return Transactions succesful', async function () {

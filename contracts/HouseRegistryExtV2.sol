@@ -7,11 +7,7 @@ import '@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol';
 import './token/IHouseToken.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
-contract HouseRegistryExt is Initializable, HouseRegistry {
-    function init(address _daiAddress) public initializer {
-        daiAddress = _daiAddress;
-    }
-
+contract HouseRegistryExtV2 is Initializable, HouseRegistry {
     address public daiAddress;
 
     event IsTransactionSucces(string message, address buyerAddress);
@@ -51,5 +47,20 @@ contract HouseRegistryExt is Initializable, HouseRegistry {
             'Transactions succesful',
             HouseToken(houses[_houseId]).buyerAddress()
         );
+    }
+
+    function getExpensiveHouseIds() external view returns (uint256) {
+        uint256 count = 0;
+        uint256 expensive = 0;
+        uint256 houseId;
+        for (uint256 i = 0; i < houseIndex.length; i++) {
+            if (HouseToken(houses[houseIndex[i]]).price() >= expensive) {
+                expensive = HouseToken(houses[houseIndex[i]]).price();
+                houseId = HouseToken(houses[houseIndex[i]]).id();
+                count++;
+            }
+            count++;
+        }
+        return houseId;
     }
 }

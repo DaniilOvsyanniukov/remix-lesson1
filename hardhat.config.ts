@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-
 import { HardhatUserConfig, task } from 'hardhat/config';
 // import "@nomiclabs/hardhat-ganache";
 import '@nomiclabs/hardhat-etherscan';
@@ -7,6 +6,7 @@ import '@nomiclabs/hardhat-waffle';
 import '@typechain/hardhat';
 import 'hardhat-gas-reporter';
 import 'solidity-coverage';
+import '@openzeppelin/hardhat-upgrades';
 import 'hardhat-contract-sizer';
 
 dotenv.config();
@@ -39,7 +39,7 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 const config: HardhatUserEtherscanConfig = {
   defaultNetwork: 'hardhat',
   solidity: {
-    compilers: [{ version: '0.8.1', settings: {} }],
+    compilers: [{ version: '0.8.2', settings: {} }],
   },
   networks: {
     hardhat: {},
