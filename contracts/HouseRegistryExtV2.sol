@@ -21,33 +21,33 @@ contract HouseRegistryExtV2 is Initializable, HouseRegistry {
         listHouse(_price, _priceDai, _area, msg.sender, _houseAddress);
     }
 
-    // function buyHouseWithETH(uint256 _houseId) external payable {
-    //     require(msg.value >= HouseToken(houses[_houseId]).price(), 'value less than cost');
-    //     if (msg.value > HouseToken(houses[_houseId]).price()) {
-    //         payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).price());
-    //     }
-    //     HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-    //     payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(
-    //         HouseToken(houses[_houseId]).price()
-    //     );
-    //     emit IsTransactionSucces(
-    //         'Transactions succesful',
-    //         HouseToken(houses[_houseId]).buyerAddress()
-    //     );
-    // }
+    function buyHouseWithETH(uint256 _houseId) external payable {
+        require(msg.value >= HouseToken(houses[_houseId]).price(), 'value less than cost');
+        if (msg.value > HouseToken(houses[_houseId]).price()) {
+            payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).price());
+        }
+        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
+        payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(
+            HouseToken(houses[_houseId]).price()
+        );
+        emit IsTransactionSucces(
+            'Transactions succesful',
+            HouseToken(houses[_houseId]).buyerAddress()
+        );
+    }
 
-    // function buyHouseWithDai(uint256 _houseId) external {
-    //     IERC20Upgradeable(daiAddress).transferFrom(
-    //         msg.sender,
-    //         HouseToken(houses[_houseId]).sellerAddress(),
-    //         HouseToken(houses[_houseId]).price()
-    //     );
-    //     HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-    //     emit IsTransactionSucces(
-    //         'Transactions succesful',
-    //         HouseToken(houses[_houseId]).buyerAddress()
-    //     );
-    // }
+    function buyHouseWithDai(uint256 _houseId) external {
+        IERC20Upgradeable(daiAddress).transferFrom(
+            msg.sender,
+            HouseToken(houses[_houseId]).sellerAddress(),
+            HouseToken(houses[_houseId]).price()
+        );
+        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
+        emit IsTransactionSucces(
+            'Transactions succesful',
+            HouseToken(houses[_houseId]).buyerAddress()
+        );
+    }
 
     function getExpensiveHouseIds() external view returns (uint256) {
         uint256 count = 0;
