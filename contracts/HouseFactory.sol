@@ -7,6 +7,7 @@ import './token/HouseToken.sol';
 import './IHouseFactory.sol';
 
 contract HouseFactory is IHouseFactory {
+    mapping(address => HouseToken) public houseTokens;
     address public houseTokenAddress;
 
     function createHouse(
@@ -18,7 +19,7 @@ contract HouseFactory is IHouseFactory {
         address sellerAddress_,
         address buyerAddress_,
         string memory houseAddress_
-    ) external override {
+    ) external override returns (address) {
         HouseToken house = new HouseToken(
             id_,
             serialNumber_,
@@ -30,10 +31,8 @@ contract HouseFactory is IHouseFactory {
             houseAddress_,
             false
         );
+        houseTokens[address(house)] = house;
         houseTokenAddress = address(house);
-    }
-
-    function getTokAddress() public view override returns (address) {
         return houseTokenAddress;
     }
 }

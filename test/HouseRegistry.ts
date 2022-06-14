@@ -73,8 +73,4 @@ describe('HouseRegistry', function () {
       message
     );
   });
-  // it.only('asdas', async function () {
-  //   const houseToken = await houseRegistry.test(houseId);
-  //   console.log(houseToken)
-  // });
 });

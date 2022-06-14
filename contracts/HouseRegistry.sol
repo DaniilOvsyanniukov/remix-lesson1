@@ -4,7 +4,6 @@ pragma solidity ^0.8.2;
 
 import './token/IHouseToken.sol';
 import './IHouseFactory.sol';
-import './HouseFactory.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
 contract HouseRegistry is Initializable {
@@ -51,7 +50,7 @@ contract HouseRegistry is Initializable {
         require(_price * _area > 0, 'value cannot be null');
         uint256 houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
         require(finHouseId(houseId), 'this houseId already exists');
-        IHouseFactory(houseFactoryAddress).createHouse(
+        houses[houseId] = IHouseFactory(houseFactoryAddress).createHouse(
             houseId,
             countOfHouses,
             _price,
@@ -61,7 +60,6 @@ contract HouseRegistry is Initializable {
             _sellerAddress,
             _houseAddress
         );
-        houses[houseId] = IHouseFactory(houseFactoryAddress).getTokAddress();
         _ownerCooldown(block.timestamp + cooldownTime, msg.sender);
         houseIndex.push(houseId);
         countOfHouses++;

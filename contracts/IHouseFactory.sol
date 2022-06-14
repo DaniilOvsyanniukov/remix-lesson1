@@ -13,7 +13,5 @@ interface IHouseFactory {
         address sellerAddress_,
         address buyerAddress_,
         string memory houseAddress_
-    ) external;
-
-    function getTokAddress() external view returns (address);
+    ) external returns (address);
 }
