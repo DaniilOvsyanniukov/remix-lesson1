@@ -2,14 +2,17 @@
 
 pragma solidity ^0.8.2;
 
-import './token/HouseToken.sol';
+import './token/IHouseToken.sol';
+import './IHouseFactory.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
 contract HouseRegistry is Initializable {
-    function initialize() public initializer {
+    function initialize(address _houseFactoryAddress) public initializer {
+        houseFactoryAddress = _houseFactoryAddress;
         cooldownTime = 1 days;
     }
 
+    address public houseFactoryAddress;
     uint256 public cooldownTime;
     uint256 public countOfHouses;
 
@@ -47,7 +50,7 @@ contract HouseRegistry is Initializable {
         require(_price * _area > 0, 'value cannot be null');
         uint256 houseId = _generateHouseId(_sellerAddress, _area, _houseAddress);
         require(finHouseId(houseId), 'this houseId already exists');
-        HouseToken house = new HouseToken(
+        houses[houseId] = IHouseFactory(houseFactoryAddress).createHouse(
             houseId,
             countOfHouses,
             _price,
@@ -55,10 +58,8 @@ contract HouseRegistry is Initializable {
             _area,
             _sellerAddress,
             _sellerAddress,
-            _houseAddress,
-            false
+            _houseAddress
         );
-        houses[houseId] = address(house);
         _ownerCooldown(block.timestamp + cooldownTime, msg.sender);
         houseIndex.push(houseId);
         countOfHouses++;
@@ -78,10 +79,10 @@ contract HouseRegistry is Initializable {
 
     function delistHouse(uint256 houseId) public returns (string memory) {
         require(
-            HouseToken(houses[houseId]).sellerAddress() == msg.sender,
+            IHouseToken(houses[houseId]).sellerAddress() == msg.sender,
             'You do not have access'
         );
-        HouseToken(houses[houseId]).delistHouse();
+        IHouseToken(houses[houseId]).delistHouse();
         string memory message = 'delisted was successful';
         emit IsDelistedHouse(message);
         return message;
@@ -90,14 +91,14 @@ contract HouseRegistry is Initializable {
     function getCheapHouseIds(uint256 cost) external view returns (uint256[] memory) {
         uint256 count = 0;
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).price() <= cost) {
+            if (IHouseToken(houses[houseIndex[i]]).price() <= cost) {
                 count++;
             }
         }
         uint256[] memory filteredHouses = new uint256[](count);
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).price() <= cost) {
-                filteredHouses[i] = HouseToken(houses[houseIndex[i]]).id();
+            if (IHouseToken(houses[houseIndex[i]]).price() <= cost) {
+                filteredHouses[i] = IHouseToken(houses[houseIndex[i]]).id();
             }
         }
         return filteredHouses;

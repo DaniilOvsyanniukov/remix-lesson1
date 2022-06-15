@@ -13,18 +13,28 @@ describe('HouseRegistryExtV2', function () {
   let daiAddress: any;
   let beacon: any;
   let houseAddress: any;
+  let factoryAddress: any;
 
   beforeEach(async function () {
     [acc1, acc2, acc3] = await ethers.getSigners();
+    const HouseFactory = await ethers.getContractFactory('HouseFactory', acc3);
+    const houseFactory = await HouseFactory.deploy();
+    factoryAddress = houseFactory.address;
+    await houseFactory.deployed();
     const HouseRegistryExt = await ethers.getContractFactory('HouseRegistryExt');
     const DaiToken = await ethers.getContractFactory('DaiToken', acc3);
     daiToken = await DaiToken.deploy();
     daiAddress = daiToken.address;
     await daiToken.deployed();
     beacon = await upgrades.deployBeacon(HouseRegistryExt);
-    houseRegistryExt = await upgrades.deployBeaconProxy(beacon, HouseRegistryExt, [daiAddress], {
-      initializer: 'init',
-    });
+    houseRegistryExt = await upgrades.deployBeaconProxy(
+      beacon,
+      HouseRegistryExt,
+      [daiAddress, factoryAddress],
+      {
+        initializer: 'init',
+      }
+    );
 
     const func = await houseRegistryExt.connect(acc2).listHouseSimple(103, 103, 103, 'asd');
     const result = await func.wait();
@@ -101,7 +111,7 @@ describe('HouseRegistryExtV2', function () {
     const HouseRegistryExtV2 = await ethers.getContractFactory('HouseRegistryExtV2');
     await upgrades.upgradeBeacon(beacon, HouseRegistryExtV2);
     houseRegistryExtV2 = HouseRegistryExtV2.attach(houseRegistryExt.address);
-    await houseRegistryExtV2.connect(acc2).listHouseSimple(100, 100, 100, 'asd');
+    await houseRegistryExtV2.connect(acc3).listHouseSimple(100, 100, 100, 'asd');
     const expensiveHouse = await houseRegistryExtV2
       .connect(acc1)
       .listHouseSimple(200, 200, 200, 'asd');
@@ -109,6 +119,5 @@ describe('HouseRegistryExtV2', function () {
     const expensiveHouseId = result.events[0].args[0];
     const func = await houseRegistryExtV2.getExpensiveHouseIds();
     await expect(await func).to.equal(expensiveHouseId);
-    
   });
 });

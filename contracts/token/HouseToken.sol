@@ -6,7 +6,7 @@ pragma solidity ^0.8.2;
 import '@openzeppelin/contracts/token/ERC721/ERC721.sol';
 import './IHouseToken.sol';
 
-contract HouseToken is ERC721, IHouseToken {
+contract HouseToken is ERC721 {
     uint256 public id;
     uint256 public serialNumber;
     uint256 public price;
@@ -39,11 +39,11 @@ contract HouseToken is ERC721, IHouseToken {
         isdelistedHouse = isdelistedHouse_;
     }
 
-    function changeBuyerAddress(address _buyerAddress) external override {
+    function changeBuyerAddress(address _buyerAddress) external {
         buyerAddress = _buyerAddress;
     }
 
-    function delistHouse() external override {
+    function delistHouse() external {
         isdelistedHouse = true;
     }
 }

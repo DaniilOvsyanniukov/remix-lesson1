@@ -8,8 +8,9 @@ import './token/IHouseToken.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 
 contract HouseRegistryExt is Initializable, HouseRegistry {
-    function init(address _daiAddress) public initializer {
+    function init(address _daiAddress, address _factoryAddress) public initializer {
         daiAddress = _daiAddress;
+        initialize(_factoryAddress);
     }
 
     address public daiAddress;
@@ -26,30 +27,30 @@ contract HouseRegistryExt is Initializable, HouseRegistry {
     }
 
     function buyHouseWithETH(uint256 _houseId) external payable {
-        require(msg.value >= HouseToken(houses[_houseId]).price(), 'value less than cost');
-        if (msg.value > HouseToken(houses[_houseId]).price()) {
-            payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).price());
+        require(msg.value >= IHouseToken(houses[_houseId]).price(), 'value less than cost');
+        if (msg.value > IHouseToken(houses[_houseId]).price()) {
+            payable(msg.sender).transfer(msg.value - IHouseToken(houses[_houseId]).price());
         }
-        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-        payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(
-            HouseToken(houses[_houseId]).price()
+        IHouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
+        payable(IHouseToken(houses[_houseId]).sellerAddress()).transfer(
+            IHouseToken(houses[_houseId]).price()
         );
         emit IsTransactionSucces(
             'Transactions succesful',
-            HouseToken(houses[_houseId]).buyerAddress()
+            IHouseToken(houses[_houseId]).buyerAddress()
         );
     }
 
     function buyHouseWithDai(uint256 _houseId) external {
         IERC20Upgradeable(daiAddress).transferFrom(
             msg.sender,
-            HouseToken(houses[_houseId]).sellerAddress(),
-            HouseToken(houses[_houseId]).price()
+            IHouseToken(houses[_houseId]).sellerAddress(),
+            IHouseToken(houses[_houseId]).price()
         );
-        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
+        IHouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
         emit IsTransactionSucces(
             'Transactions succesful',
-            HouseToken(houses[_houseId]).buyerAddress()
+            IHouseToken(houses[_houseId]).buyerAddress()
         );
     }
 }

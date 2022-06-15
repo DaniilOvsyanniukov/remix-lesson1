@@ -8,11 +8,19 @@ describe('HouseRegistry', function () {
   let acc3: any;
   let houseRegistry: any;
   let houseId: any;
+  let factoryAddress: any;
 
   beforeEach(async function () {
     [acc1, acc2, acc3] = await ethers.getSigners();
     const HouseRegistry = await ethers.getContractFactory('HouseRegistry');
-    houseRegistry = await upgrades.deployProxy(HouseRegistry, { initializer: 'initialize' });
+    const HouseFactory = await ethers.getContractFactory('HouseFactory', acc3);
+    const houseFactory = await HouseFactory.deploy();
+    factoryAddress = houseFactory.address;
+    await houseFactory.deployed();
+    houseRegistry = await upgrades.deployProxy(HouseRegistry, [factoryAddress], {
+      initializer: 'initialize',
+    });
+
     await houseRegistry.deployed();
     const func = await houseRegistry.listHouse(103, 103, 103, acc1.address, 'asd');
     const result = await func.wait();

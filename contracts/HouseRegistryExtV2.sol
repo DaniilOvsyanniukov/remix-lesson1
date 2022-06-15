@@ -22,30 +22,30 @@ contract HouseRegistryExtV2 is Initializable, HouseRegistry {
     }
 
     function buyHouseWithETH(uint256 _houseId) external payable {
-        require(msg.value >= HouseToken(houses[_houseId]).price(), 'value less than cost');
-        if (msg.value > HouseToken(houses[_houseId]).price()) {
-            payable(msg.sender).transfer(msg.value - HouseToken(houses[_houseId]).price());
+        require(msg.value >= IHouseToken(houses[_houseId]).price(), 'value less than cost');
+        if (msg.value > IHouseToken(houses[_houseId]).price()) {
+            payable(msg.sender).transfer(msg.value - IHouseToken(houses[_houseId]).price());
         }
-        HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
-        payable(HouseToken(houses[_houseId]).sellerAddress()).transfer(
-            HouseToken(houses[_houseId]).price()
+        IHouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
+        payable(IHouseToken(houses[_houseId]).sellerAddress()).transfer(
+            IHouseToken(houses[_houseId]).price()
         );
         emit IsTransactionSucces(
             'Transactions succesful',
-            HouseToken(houses[_houseId]).buyerAddress()
+            IHouseToken(houses[_houseId]).buyerAddress()
         );
     }
 
     function buyHouseWithDai(uint256 _houseId) external {
         IERC20Upgradeable(daiAddress).transferFrom(
             msg.sender,
-            HouseToken(houses[_houseId]).sellerAddress(),
-            HouseToken(houses[_houseId]).price()
+            IHouseToken(houses[_houseId]).sellerAddress(),
+            IHouseToken(houses[_houseId]).price()
         );
         HouseToken(houses[_houseId]).changeBuyerAddress(msg.sender);
         emit IsTransactionSucces(
             'Transactions succesful',
-            HouseToken(houses[_houseId]).buyerAddress()
+            IHouseToken(houses[_houseId]).buyerAddress()
         );
     }
 
@@ -54,9 +54,9 @@ contract HouseRegistryExtV2 is Initializable, HouseRegistry {
         uint256 expensive = 0;
         uint256 houseId;
         for (uint256 i = 0; i < houseIndex.length; i++) {
-            if (HouseToken(houses[houseIndex[i]]).price() >= expensive) {
-                expensive = HouseToken(houses[houseIndex[i]]).price();
-                houseId = HouseToken(houses[houseIndex[i]]).id();
+            if (IHouseToken(houses[houseIndex[i]]).price() >= expensive) {
+                expensive = IHouseToken(houses[houseIndex[i]]).price();
+                houseId = IHouseToken(houses[houseIndex[i]]).id();
                 count++;
             }
             count++;

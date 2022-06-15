@@ -10,14 +10,19 @@ describe('HouseRegistryExt', function () {
   let daiToken: any;
   let houseId: any;
   let daiAddress: any;
+  let factoryAddress: any;
 
   beforeEach(async function () {
     [acc1, acc2, acc3] = await ethers.getSigners();
+    const HouseFactory = await ethers.getContractFactory('HouseFactory', acc3);
+    const houseFactory = await HouseFactory.deploy();
+    factoryAddress = houseFactory.address;
+    await houseFactory.deployed();
     const HouseRegistryExt = await ethers.getContractFactory('HouseRegistryExt');
     const DaiToken = await ethers.getContractFactory('DaiToken', acc3);
     daiToken = await DaiToken.deploy();
     daiAddress = daiToken.address;
-    houseRegistryExt = await upgrades.deployProxy(HouseRegistryExt, [daiAddress], {
+    houseRegistryExt = await upgrades.deployProxy(HouseRegistryExt, [daiAddress, factoryAddress], {
       initializer: 'init',
     });
     await houseRegistryExt.deployed();
