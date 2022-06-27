@@ -1,0 +1,250 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x8b5E259D57B4D68CAdFE8Ba9b7d6f5F2c07bfc2d",
+    "txHash": "0x6fa9089f223ca9bb4d84d6f260bb6f05bb6cdf3557506ed0d417847ef308b4db"
+  },
+  "proxies": [
+    {
+      "address": "0xDdDFF7e796295849Dc15951e0e3C9a4Cc9563A9d",
+      "txHash": "0x6761230da46e98ce28893e2e69509781baa0c280f7534429581eaf8be388c0e7",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4AC4C2915D7A32AC341c8fbf9bCD7796b76E5975",
+      "txHash": "0xe545cd9017bb5f56035fc2c0da2f8e1f5e5d4b677ec08df8fd4233029ce1267b",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1fc6F32516B2c1733B04005B7Bd7F20fA671d18E",
+      "txHash": "0x5c96b5f012244fbed3db482be760f039a67c105fd70e831b75199e1ab6f768a4",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x70b9D07a3cFa9AA2a0D327D58B379FAdFde005C2",
+      "txHash": "0x2eae64af127b758f2412183881076dcc526f5c258f9bc61dc4010df3f33ff40f",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xE077B777523088fa584479d869261400719FE716",
+      "txHash": "0xc67bac6c353c8c42e9388d2731d5868f192f7f355a9a1e71a3b3585f71187a06",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "bbcfdc08ce14c221beee74f879253ff73c106793a55318085dcab23d0d13853b": {
+      "address": "0xb32f5116D71e3DAd3Da61Eb1d29563Ee4B101dE5",
+      "txHash": "0x0003628a13806ddfd24f5353ab492c37aee23af6ad0112cd402b7e455c1134e0",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "houseFactoryAddress",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:15"
+          },
+          {
+            "label": "cooldownTime",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:16"
+          },
+          {
+            "label": "countOfHouses",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:17"
+          },
+          {
+            "label": "houseIndex",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:34"
+          },
+          {
+            "label": "houses",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:35"
+          },
+          {
+            "label": "cooldown",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:37"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "eb665b3709682e961147a333e20876e18f3c104db121d84b67d37e16127ef470": {
+      "address": "0x84A6dd1c0bd906CC52B6d7C431EB00861278C256",
+      "txHash": "0x7a16af575784020bd710a952009115f58085196e4a7692e5c20def4f8bd20490",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "houseFactoryAddress",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:15"
+          },
+          {
+            "label": "cooldownTime",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:16"
+          },
+          {
+            "label": "countOfHouses",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:17"
+          },
+          {
+            "label": "houseIndex",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:34"
+          },
+          {
+            "label": "houses",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:35"
+          },
+          {
+            "label": "cooldown",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:37"
+          },
+          {
+            "label": "daiAddress",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_address",
+            "contract": "HouseRegistryExt",
+            "src": "contracts\\HouseRegistryExt.sol:16"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}
