@@ -29,6 +29,16 @@
       "address": "0xE077B777523088fa584479d869261400719FE716",
       "txHash": "0xc67bac6c353c8c42e9388d2731d5868f192f7f355a9a1e71a3b3585f71187a06",
       "kind": "transparent"
+    },
+    {
+      "address": "0xC3179489f85957Ac475D0811A4b3ca7cbE42683c",
+      "txHash": "0x6e128cb141fab20eeacaf03419cfe27936e62a3c039f3009ef1261e6eff560e3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xce5761137255E407ea5326DbFBfedb0e061FEd1e",
+      "txHash": "0x92ef94fc04a7075cee701590c9a699bfb4c0a093c435af8ef4b7d3bd9558508f",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -138,6 +148,220 @@
     "eb665b3709682e961147a333e20876e18f3c104db121d84b67d37e16127ef470": {
       "address": "0x84A6dd1c0bd906CC52B6d7C431EB00861278C256",
       "txHash": "0x7a16af575784020bd710a952009115f58085196e4a7692e5c20def4f8bd20490",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "houseFactoryAddress",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:15"
+          },
+          {
+            "label": "cooldownTime",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:16"
+          },
+          {
+            "label": "countOfHouses",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:17"
+          },
+          {
+            "label": "houseIndex",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:34"
+          },
+          {
+            "label": "houses",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:35"
+          },
+          {
+            "label": "cooldown",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:37"
+          },
+          {
+            "label": "daiAddress",
+            "offset": 0,
+            "slot": "6",
+            "type": "t_address",
+            "contract": "HouseRegistryExt",
+            "src": "contracts\\HouseRegistryExt.sol:16"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "72346bb67bc0a3d01b67cf3effeb913c0e0faef9424be7c2ba19efe56552684c": {
+      "address": "0xDB9bfC2a8E2Aa129bf085e9832e2AFc381D2b524",
+      "txHash": "0x75770989c2acc4f932d8f748f2bc2b4cf42989654931a83bce37b03c1e001846",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin\\contracts-upgradeable\\proxy\\utils\\Initializable.sol:67"
+          },
+          {
+            "label": "houseFactoryAddress",
+            "offset": 2,
+            "slot": "0",
+            "type": "t_address",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:15"
+          },
+          {
+            "label": "cooldownTime",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:16"
+          },
+          {
+            "label": "countOfHouses",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:17"
+          },
+          {
+            "label": "houseIndex",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:34"
+          },
+          {
+            "label": "houses",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_uint256,t_address)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:35"
+          },
+          {
+            "label": "cooldown",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "HouseRegistry",
+            "src": "contracts\\HouseRegistry.sol:37"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_address)": {
+            "label": "mapping(uint256 => address)",
+            "numberOfBytes": "32"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "ef8af70afc7de4e6ff5dcaed5d0d6d4216ef5960dd14527c4f7714f3f248ae35": {
+      "address": "0xaF87C7e8F142740b40635c53B87417AbaB683C55",
+      "txHash": "0xca73e1f0c4832d68e21b9fb55977689dbff218ad3768babc4fce1439e640956b",
       "layout": {
         "storage": [
           {

@@ -9,7 +9,7 @@ import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
 contract HouseRegistry is Initializable {
     function initialize(address _houseFactoryAddress) public initializer {
         houseFactoryAddress = _houseFactoryAddress;
-        cooldownTime = 1 days;
+        cooldownTime = 1 seconds;
     }
 
     address public houseFactoryAddress;
