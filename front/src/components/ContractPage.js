@@ -89,7 +89,7 @@ export default class ContractPage extends Component{
     }
     
     async updateDaiAddress() {
-        const newDaiAddress = (await this.houseRegistryExt.daiAddress()).toString()
+        const newDaiAddress = (await this.houseRegistryExt.daiAddress())
         this.setState({
             daiAddress:newDaiAddress
         })
@@ -188,7 +188,7 @@ export default class ContractPage extends Component{
         }
         return <>
             {this.state.balance && <p> Your balance: {ethers.utils.formatEther(this.state.balance)} ETH</p>}
-            {this.state.daiAddress && <p> DaiAddress: {ethers.utils.formatEther(this.state.daiAddress)}</p>}
+            {this.state.daiAddress && <p> DaiAddress: {this.state.daiAddress}</p>}
           {this.state.newHouseId && <p> Last added House ID : {this.state.newHouseId} </p>}
         <ul className='formInputList'>
           <li className='formInputItem'>
@@ -196,7 +196,7 @@ export default class ContractPage extends Component{
               ETH 
               <input
                 className='input'
-                type="number"
+                type="Wei"
                 name="priceETH"
                 value={this.priceEth}
                 onChange={this._handleInputChange}
@@ -211,7 +211,7 @@ export default class ContractPage extends Component{
               DAI
               <input
                 className='input'
-                type="number" 
+                type="Wei" 
                 name="priceDai"
                 value={this.proceDai}
                 onChange={this._handleInputChange}
@@ -253,7 +253,7 @@ export default class ContractPage extends Component{
           </button>
           <p>Find House Address by ID</p>
           <label className='label'>
-              Address 
+              House ID 
               <input
                 className='input'
                 type="text"
