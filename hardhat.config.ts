@@ -37,7 +37,7 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserEtherscanConfig = {
-  defaultNetwork: 'hardhat',
+  defaultNetwork: 'rinkeby',
   solidity: {
     compilers: [{ version: '0.8.2', settings: {} }],
   },
